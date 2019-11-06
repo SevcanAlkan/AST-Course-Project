@@ -1,0 +1,5 @@
+E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Core\bin\Debug\MovieStore.Core.dll
+E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Core\bin\Debug\MovieStore.Core.pdb
+E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Core\obj\Debug\MovieStore.Core.csprojAssemblyReference.cache
+E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Core\obj\Debug\MovieStore.Core.dll
+E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Core\obj\Debug\MovieStore.Core.pdb

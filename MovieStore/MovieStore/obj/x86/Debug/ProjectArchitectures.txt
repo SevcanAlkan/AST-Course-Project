@@ -1,1 +1,0 @@
-E:\Projects\Develop\MovieStore\MovieStore\MovieStore\MovieStore.csproj;x86
