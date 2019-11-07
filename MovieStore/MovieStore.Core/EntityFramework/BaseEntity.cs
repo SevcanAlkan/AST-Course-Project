@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieStore.Core.Validation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,12 +24,14 @@ namespace MovieStore.Core.EntityFramework
 
     public class BaseEntity : IBaseEntity
     {
+        [GuidValidation]
         public Guid Id { get; set; }
         public bool IsDeleted { get; set; }
     }
 
     public class TableEntity : BaseEntity, ITableEntity
     {
+        [GuidValidation]
         public Guid CreatedBy { get; set; }
         public DateTime CreateDateTime { get; set; }
         public Guid? UpdateBy { get; set; }
