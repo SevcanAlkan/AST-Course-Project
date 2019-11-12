@@ -27,26 +27,34 @@ namespace MovieStore.Desktop
     public partial class MainWindow : Window
     {
         public User CurrentUser { get; set; }
-        
+    
         private ViewModelLocator _viewModelLocator;
-        private IUserService _userService;
 
         public MainWindow()
         {
             _viewModelLocator = new ViewModelLocator();
-            //_userService = userService;
-            //DataContext = vm;
-
-            //_viewModelLocator = viewModelLocator;
-
+           
             InitializeComponent();
-        }      
+        }
 
-        private void btnLoginLogout_Click(object sender, RoutedEventArgs e)
-        {            
-            //MovieStoreDbContext con = new MovieStoreDbContext();
-            //Repository<User> repo = new Repository<User>(con);
-            //UserService service = new UserService(repo);
+        public void UpdateUser()
+        {
+            if(CurrentUser != null)
+            {
+                this.txtCurrentUser.Text = this.CurrentUser.DisplayName;
+                this.btnLogout.IsEnabled = true;
+            }
+            else
+            {
+                this.txtCurrentUser.Text = "";
+                this.btnLogout.IsEnabled = false;
+            }
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentUser = null;
+            this.UpdateUser();
             DataContext = _viewModelLocator.LoginViewModel;
         }
 
@@ -57,12 +65,12 @@ namespace MovieStore.Desktop
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if(CurrentUser == null)
+            if (CurrentUser == null)
             {
                 DataContext = _viewModelLocator.LoginViewModel;
             }
         }
     }
 
-   
+
 }

@@ -4,6 +4,7 @@
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<MovieStoreDbContext>
@@ -30,6 +31,14 @@
 
             try
             {
+                #region Users
+
+                context.Users.AddOrUpdate(p => p.UserName, new User() { Id = Guid.NewGuid(), UserName = "admin", Password = "admin", DisplayName = "Admin", IsDeleted = false });
+                context.Users.AddOrUpdate(p => p.UserName, new User() { Id = Guid.NewGuid(), UserName = "test", Password = "test", DisplayName = "Test User", IsDeleted = false });
+
+                #endregion
+
+
                 #region Languages
 
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "ab", Name = "Abkhaz", NativeName = "аҧсуа" });
@@ -42,7 +51,7 @@
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "an", Name = "Aragonese", NativeName = "Aragonés" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "hy", Name = "Armenian", NativeName = "Հայերեն" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "as", Name = "Assamese", NativeName = "অসমীয়া" });
-                context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "av", Name = "Avaric", NativeName = "авар мацӀ, магӀарул мацӀ" });
+                context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "av", Name = "Avaric", NativeName = "авар мацӀ, магӀарул мацӀ" }); 
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "ae", Name = "Aymara", NativeName = "aymar aru" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "az", Name = "Azerbaijani", NativeName = "azərbaycan dili" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "bm", Name = "Bambara", NativeName = "bamanankan" });
@@ -124,7 +133,7 @@
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "ln", Name = "Lingala", NativeName = "Lingála" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "lo", Name = "Lao", NativeName = "ພາສາລາວ" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "lt", Name = "Lithuanian", NativeName = "lietuvių kalba" });
-                context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "lu", Name = "Luba-Katanga", NativeName = "" });
+                context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "lu", Name = "Luba-Katanga", NativeName = "Luba-Katanga" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "lv", Name = "Latvian", NativeName = "latviešu valoda" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "gv", Name = "Manx", NativeName = "Gaelg, Gailck" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "mk", Name = "Macedonian", NativeName = "македонски јазик" });
@@ -189,7 +198,7 @@
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "ti", Name = "Tigrinya", NativeName = "ትግርኛ" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "bo", Name = "Tibetan Standard, Tibetan, Central", NativeName = "བོད་ཡིག" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "tk", Name = "Turkmen", NativeName = "Türkmen, Түркмен" });
-                context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "tl", Name = "Tagalog", NativeName = "Wikang Tagalog, ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔" });
+                context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "tl", Name = "Tagalog", NativeName = "Wikang Tagalog" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "tn", Name = "Tswana", NativeName = "Setswana" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "to", Name = "Tonga (Tonga Islands)", NativeName = "faka Tonga" });
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "tr", Name = "Turkish", NativeName = "Türkçe" });
@@ -214,6 +223,8 @@
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "za", Name = "Zhuang, Chuang", NativeName = "Saɯ cueŋƅ, Saw cuengh" });
 
                 #endregion
+
+                context.SaveChanges();
             }
             catch (Exception ex)
             {
