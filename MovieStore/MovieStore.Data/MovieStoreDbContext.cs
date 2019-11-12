@@ -45,13 +45,13 @@ namespace MovieStore.Data
             }
         }
 
-        public DbSet<Collection> Collections { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<ProjectCast> ProjectCasts { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<MovieCast> MovieCasts { get; set; }
-        public DbSet<MovieContent> MovieContents { get; set; }
+        public DbSet<Language> Languages { get; set; }
         public DbSet<MovieGenre> MovieGenres { get; set; }
-        public DbSet<MovieReview> MovieReviews { get; set; }
         public DbSet<MovieTag> MovieTags { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Publisher> Publishers { get; set; }

@@ -22,13 +22,9 @@ namespace MovieStore.Domain
     {
 
         //Foreign keys...
-        public virtual ICollection<Collection> MovieCollection { get; set; }
-        public virtual ICollection<MovieReview> Reviews { get; set; }
 
         public User()
         {
-            MovieCollection = new HashSet<Collection>();
-            Reviews = new HashSet<MovieReview>();
         }
     }
 }
