@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MovieStore.Desktop
+namespace MovieStore.Desktop.Conponents
 {
     /// <summary>
     /// Interaction logic for MovieItem.xaml
@@ -22,7 +22,7 @@ namespace MovieStore.Desktop
     {
         public MovieItem()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }

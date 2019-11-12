@@ -13,7 +13,6 @@ namespace MovieStore.Data.SubStructure
     public interface IBaseService<D>
         where D : BaseEntity, IBaseEntity, new()
     {
-        IRepository<D> Repository { get; }
         IList<D> GetAll(Expression<Func<D, bool>> expr);
 
         Task<D> GetByIdAsync(Guid id);
@@ -30,19 +29,11 @@ namespace MovieStore.Data.SubStructure
     public class BaseService<D> : IBaseService<D>
          where D : BaseEntity, IBaseEntity, new()
     {
-        protected UnitOfWork uow;
+        protected IRepository<D> Repository;
 
-        public BaseService(UnitOfWork _uow)
+        public BaseService(IRepository<D> repository)
         {
-            uow = _uow;
-        }
-
-        public IRepository<D> Repository
-        {
-            get
-            {
-                return uow.Repository<D>();
-            }
+            Repository = repository;
         }
 
         public virtual async Task<D> GetByIdAsync(Guid id)
@@ -52,7 +43,7 @@ namespace MovieStore.Data.SubStructure
                 if (Validation.IsNullOrEmpty(id))
                     return null;
 
-                return await uow.Repository<D>().GetByID(id);
+                return await Repository.GetByID(id);
             }
             catch (Exception e)
             {
@@ -130,7 +121,7 @@ namespace MovieStore.Data.SubStructure
             {
                 Guid _userId = userId == null ? Guid.Empty : userId.Value;
 
-                D oldRec = await uow.Repository<D>().GetByID(id);
+                D oldRec = await Repository.GetByID(id);
                 if (Validation.IsNull(oldRec))
                     return null;
 
@@ -160,7 +151,7 @@ namespace MovieStore.Data.SubStructure
             {
                 Guid _userId = userId == null ? Guid.Empty : userId.Value;
 
-                D entity = await uow.Repository<D>().GetByID(id);
+                D entity = await Repository.GetByID(id);
                 if (Validation.IsNull(entity))
                     return false;
 
@@ -189,7 +180,7 @@ namespace MovieStore.Data.SubStructure
             {
                 Guid _userId = userId == null ? Guid.Empty : userId.Value;
 
-                D entity = await uow.Repository<D>().GetByID(id);
+                D entity = await Repository.GetByID(id);
                 if (Validation.IsNull(entity))
                     return false;
 
@@ -217,7 +208,7 @@ namespace MovieStore.Data.SubStructure
         {
             try
             {
-                await uow.SaveChanges();
+                await Repository.SaveChangesAsync();
 
                 return true;
             }

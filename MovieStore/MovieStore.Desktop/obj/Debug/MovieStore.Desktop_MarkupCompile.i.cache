@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Desktop\App.xaml
-21129745439
+4283874437
 
-7299472074
-211853036983
-MainWindow.xaml;MovieItem.xaml;
+16-1357361543
+1271079699752
+MainWindow.xaml;Components\MovieItem.xaml;Views\HomeView.xaml;Views\LoginView.xaml;
 
-True
+False
 

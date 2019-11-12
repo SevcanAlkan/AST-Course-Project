@@ -8,11 +8,11 @@ using MovieStore.Domain;
 
 namespace MovieStore.Data.Service
 {
-    public class GenreService : BaseService<Genre>, IGenreService
+    public class UserService : BaseService<User>, IUserService
     {
         #region Ctor
 
-        public GenreService(IRepository<Genre> repository)
+        public UserService(IRepository<User> repository)
             : base(repository)
         {
 
@@ -26,7 +26,7 @@ namespace MovieStore.Data.Service
         #endregion
     }
 
-    public interface IGenreService : IBaseService<Genre>
+    public interface IUserService : IBaseService<User>
     {
     }
 }

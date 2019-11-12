@@ -15,12 +15,14 @@ namespace MovieStore.Data.SubStructure
         IQueryable<T> Query(bool isDeleted = false);
         void Add(T entity);
         void Update(T entity);
+        Task<int> SaveChangesAsync();
     }
 
     public class Repository<T> : IRepository<T>
           where T : BaseEntity
     {
         private MovieStoreDbContext con;
+
         public Repository(MovieStoreDbContext context)
         {
             con = context;
@@ -50,6 +52,10 @@ namespace MovieStore.Data.SubStructure
         public IQueryable<T> Query(bool isDeleted = false)
         {
             return con.Set<T>().AsNoTracking().Where(x => !x.IsDeleted || x.IsDeleted == isDeleted);
+        }
+        public virtual async Task<int> SaveChangesAsync()
+        {
+            return await con.SaveChangesAsync();
         }
     }
 }

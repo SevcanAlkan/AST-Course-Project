@@ -12,8 +12,8 @@ namespace MovieStore.Data.Service
     {
         #region Ctor
 
-        public MovieTagService(UnitOfWork _uow)
-            : base(_uow)
+        public MovieTagService(IRepository<MovieTag> repository)
+            : base(repository)
         {
 
         }

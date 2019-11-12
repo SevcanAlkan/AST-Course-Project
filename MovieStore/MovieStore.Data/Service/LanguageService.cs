@@ -12,8 +12,8 @@ namespace MovieStore.Data.Service
     {
         #region Ctor
 
-        public LanguageService(UnitOfWork _uow)
-            : base(_uow)
+        public LanguageService(IRepository<Language> repository)
+            : base(repository)
         {
 
         }

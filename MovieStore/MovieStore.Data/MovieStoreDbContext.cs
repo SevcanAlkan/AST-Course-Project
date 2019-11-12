@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieStore.Data
-{
+{    
     public class MovieStoreDbContext : DbContext
     {
         public MovieStoreDbContext() : base("name=DefaultConnection")
