@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MovieStore.Domain
 {
-    public class MovieBase : BaseEntity
+    public class MovieBase : TableEntity
     {
         [GuidValidation]
         public Guid PublisherId { get; set; }
@@ -20,12 +20,8 @@ namespace MovieStore.Domain
 
         [Range(1600, 2500)]
         public int Year { get; set; }
-        [Range(0, 5)]
-        public short Rate { get; set; }
-        [Range(0, int.MaxValue)]
-        public int SoldAmount { get; set; }
-        [Range(0, 100_000)]
-        public double Price { get; set; }
+        [GuidValidation]
+        public Guid LanguageId { get; set; }
     }
 
     public class Movie : MovieBase
@@ -33,22 +29,19 @@ namespace MovieStore.Domain
 
         //Foreign keys...
         public virtual Publisher Publisher { get; set; }
+        public virtual Language Language { get; set; }
 
-        public virtual ICollection<Collection> Collections { get; set; }
+        public virtual ICollection<Project> Projects { get; set; }
         public virtual ICollection<MovieCast> Cast { get; set; }
-        public virtual ICollection<MovieContent> Contents { get; set; }
         public virtual ICollection<MovieGenre> Genres { get; set; }
-        public virtual ICollection<MovieReview> Reviews { get; set; }
         public virtual ICollection<MovieTag> Tags { get; set; }
 
 
         public Movie()
         {
-            Collections = new HashSet<Collection>();
+            Projects = new HashSet<Project>();
             Cast = new HashSet<MovieCast>();
-            Contents = new HashSet<MovieContent>();
             Genres = new HashSet<MovieGenre>();
-            Reviews = new HashSet<MovieReview>();
             Tags = new HashSet<MovieTag>();
         }
     }

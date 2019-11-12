@@ -24,10 +24,12 @@ namespace MovieStore.Domain
 
         //Foreign keys...
         public virtual ICollection<MovieCast> Movies { get; set; }
+        public virtual ICollection<ProjectCast> ProjectCasts { get; set; }
 
         public Person()
         {
             Movies = new HashSet<MovieCast>();
+            ProjectCasts = new HashSet<ProjectCast>();
         }
     }
 }

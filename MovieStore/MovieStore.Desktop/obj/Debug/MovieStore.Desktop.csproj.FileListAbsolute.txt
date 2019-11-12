@@ -28,5 +28,4 @@ E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Desktop\obj\Debug\MovieStor
 E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Desktop\obj\Debug\MovieStore.Desktop.exe
 E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Desktop\obj\Debug\MovieStore.Desktop.pdb
 E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Desktop\obj\Debug\MovieItem.g.cs
-E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Desktop\obj\Debug\GeneratedInternalTypeHelper.g.cs
 E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Desktop\obj\Debug\MovieItem.baml

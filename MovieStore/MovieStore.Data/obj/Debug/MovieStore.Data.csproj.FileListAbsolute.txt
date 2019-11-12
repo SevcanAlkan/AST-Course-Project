@@ -16,3 +16,4 @@ E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Data\obj\Debug\MovieStore.D
 E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Data\obj\Debug\MovieStore.Data.Migrations.T2.resources
 E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Data\obj\Debug\MovieStore.Data.csproj.GenerateResource.cache
 E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Data\obj\Debug\MovieStore.Data.Migrations.T2R1.resources
+E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Data\obj\Debug\MovieStore.Data.Migrations.T5.resources
