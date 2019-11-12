@@ -1,8 +1,0 @@
-E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Domain\bin\Debug\MovieStore.Domain.dll
-E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Domain\bin\Debug\MovieStore.Domain.pdb
-E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Domain\bin\Debug\MovieStore.Core.dll
-E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Domain\bin\Debug\MovieStore.Core.pdb
-E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Domain\obj\Debug\MovieStore.Domain.csprojAssemblyReference.cache
-E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Domain\obj\Debug\MovieStore.Domain.csproj.CopyComplete
-E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Domain\obj\Debug\MovieStore.Domain.dll
-E:\Projects\Develop\MovieStore\MovieStore\MovieStore.Domain\obj\Debug\MovieStore.Domain.pdb

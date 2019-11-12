@@ -59,9 +59,27 @@
     <Compile Include="Migrations\201911071315323_T2-R1.designer.cs">
       <DependentUpon>201911071315323_T2-R1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911121004147_T5.cs" />
+    <Compile Include="Migrations\201911121004147_T5.designer.cs">
+      <DependentUpon>201911121004147_T5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MovieStoreDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\LanguageService.cs" />
+    <Compile Include="Service\MovieService.cs" />
+    <Compile Include="Service\MovieCastService.cs" />
+    <Compile Include="Service\MovieGenreService.cs" />
+    <Compile Include="Service\MovieTagService.cs" />
+    <Compile Include="Service\PersonService.cs" />
+    <Compile Include="Service\UserService.cs" />
+    <Compile Include="Service\ProjectService.cs" />
+    <Compile Include="Service\ProjectCastService.cs" />
+    <Compile Include="Service\PublisherService.cs" />
+    <Compile Include="Service\GenreService.cs" />
+    <Compile Include="Service\TagService.cs" />
+    <Compile Include="SubStructure\BaseService.cs" />
+    <Compile Include="SubStructure\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MovieStore.Core\MovieStore.Core.csproj">
@@ -84,6 +102,12 @@
     <EmbeddedResource Include="Migrations\201911071315323_T2-R1.resx">
       <DependentUpon>201911071315323_T2-R1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911121004147_T5.resx">
+      <DependentUpon>201911121004147_T5.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

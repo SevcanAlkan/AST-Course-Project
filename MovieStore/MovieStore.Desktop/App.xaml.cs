@@ -1,4 +1,10 @@
-﻿using System;
+﻿using MovieStore.Data;
+using MovieStore.Data.SubStructure;
+using MovieStore.Desktop.DI;
+using MovieStore.Desktop.ViewModel;
+using MovieStore.Domain;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +19,11 @@ namespace MovieStore.Desktop
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            IocKernel.Initialize(new IocConfiguration());
+
+            base.OnStartup(e);
+        }
     }
 }

@@ -4,9 +4,50 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieStore.Desktop"
+        xmlns:viewmodels="clr-namespace:MovieStore.Desktop.ViewModel" 
+        xmlns:views="clr-namespace:MovieStore.Desktop.Views" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="iMovie" Height="450" Width="800" Background="#FF272626" BorderBrush="#FF272626" Foreground="Snow" Opacity="0.8" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStyle="ToolWindow">
+    <Window.Resources>
+        <DataTemplate x:Name="loginViewTemplate" DataType="{x:Type viewmodels:LoginViewModel}">
+            <views:LoginView DataContext="{Binding LoginViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="homeViewTemplate" DataType="{x:Type viewmodels:HomeViewModel}">
+            <views:HomeView DataContext="{Binding}" />
+        </DataTemplate>
+    </Window.Resources>
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
+    <!--<Window.DataContext>
+        <VM:MainWindowViewModel />
+    </Window.DataContext>-->
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Background="Gray" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
+            <StackPanel>
+                <TextBlock Text="" Name="txtCurrentUser" FontWeight="Bold" Margin="10"/>
+                <Button x:Name="btnLogout" Content="Logout" Click="btnLogout_Click" Margin="0 0 0 20"/>
+                <Button x:Name="btnHome" Content="Home" Click="btnHome_Click" />
+                <Button x:Name="btnMovie" Content="Movies" Click="btnHome_Click" />
+            </StackPanel>
+        </DockPanel>
+
+        <ContentControl Content="{Binding}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" />
+
     </Grid>
 </Window>
