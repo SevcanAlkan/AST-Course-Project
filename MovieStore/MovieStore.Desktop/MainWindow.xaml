@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieStore.Desktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="iMovie" Height="450" Width="800" Background="#FF272626" WindowStyle="None" BorderBrush="#FF272626" Foreground="Snow" Opacity="0.8" AllowsTransparency="True">
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
     <Grid>
-        
+        <Grid HorizontalAlignment="Left" Height="43" VerticalAlignment="Top" Width="792">
+            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,10,0,0"/>
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Height="361" Margin="10,48,0,0" VerticalAlignment="Top" Width="772" Name="grdMovies">
+            <!--<local:MovieItem Margin="10,10,658,226"/>-->
+        </Grid>
+
     </Grid>
 </Window>

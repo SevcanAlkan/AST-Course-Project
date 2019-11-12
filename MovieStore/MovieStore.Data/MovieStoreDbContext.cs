@@ -33,11 +33,11 @@ namespace MovieStore.Data
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
         }
 
-        public virtual void Commit()
+        public Task<int> CommitAsync()
         {
             try
             {
-                base.SaveChanges();
+                return base.SaveChangesAsync();
             }
             catch (Exception dbEx)
             {

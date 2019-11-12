@@ -42,11 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Convert.cs" />
     <Compile Include="EntityFramework\BaseEntity.cs" />
     <Compile Include="Enum\CastRole.cs" />
     <Compile Include="Enum\ContentType.cs" />
+    <Compile Include="ModelCopier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\GuidValidation.cs" />
+    <Compile Include="Validation\Validation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
