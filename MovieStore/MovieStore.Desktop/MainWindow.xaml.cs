@@ -70,6 +70,11 @@ namespace MovieStore.Desktop
                 DataContext = _viewModelLocator.LoginViewModel;
             }
         }
+
+        private void btnGenre_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = _viewModelLocator.GenreViewModel;
+        }
     }
 
 

@@ -25,7 +25,11 @@ namespace MovieStore.Desktop.DI
 
             Bind<IUserService>().To<UserService>().InTransientScope().WithConstructorArgument(typeof(Type),
               x => x.Request.ParentContext.Plan.Type);
+            Bind<IGenreService>().To<GenreService>().InTransientScope().WithConstructorArgument(typeof(Type),
+             x => x.Request.ParentContext.Plan.Type);
+
             Bind<LoginViewModel>().ToSelf().InTransientScope();
+            Bind<GenreViewModel>().ToSelf().InTransientScope();
         }
     }
 }
