@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieStore.Desktop"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:viewmodels="clr-namespace:MovieStore.Desktop.ViewModel" 
         xmlns:views="clr-namespace:MovieStore.Desktop.Views" 
         mc:Ignorable="d"
-        Title="iMovie" Height="450" Width="800" Background="#FF272626" BorderBrush="#FF272626" Foreground="Snow" Opacity="0.8" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStyle="ToolWindow">
+        Title="iMovie" Height="600" Width="1080" Background="#FF272626" BorderBrush="#FF272626" Foreground="White" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStyle="None">
     <Window.Resources>
         <DataTemplate x:Name="loginViewTemplate" DataType="{x:Type viewmodels:LoginViewModel}">
             <views:LoginView DataContext="{Binding LoginViewModel, Source={StaticResource ViewModelLocator}}" />
@@ -25,33 +26,62 @@
     <!--<Window.DataContext>
         <VM:MainWindowViewModel />
     </Window.DataContext>-->
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-
-        <DockPanel Background="Gray" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
-            <StackPanel>
-                <TextBlock Text="" Name="txtCurrentUser" FontWeight="Bold" Margin="10"/>
-                <Button x:Name="btnLogout" Content="Logout" Click="btnLogout_Click" Margin="0 0 0 20"/>
-                <Button x:Name="btnHome" Content="Home" Click="btnHome_Click" />
-                <Button x:Name="btnMovie" Content="Movies" Click="btnHome_Click" />
-                <Button x:Name="btnGenre" Content="Genres" Click="btnGenre_Click" />
+        
+        <Grid Height="50" VerticalAlignment="Top" Grid.Row="0" Background="#FF3885C5">
+            <TextBlock Text="Movie Dubbing Studio Manager" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Sevcan Alkan" VerticalAlignment="Center" FontSize="18"/>
+                <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                    <StackPanel Width="150">
+                        <Button Content="Settings"/>
+                        <Separator/>
+                        <Button Content="Logout"/>
+                        <Button Content="Close" Name="btnClose" Click="btnClose_Click"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
             </StackPanel>
-        </DockPanel>
+        </Grid>
 
-        <ContentControl Content="{Binding}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" />
+        <Grid Width="200" HorizontalAlignment="Left" Grid.RowSpan="2" Background="#FF1C53B4">
+            
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
+            <DockPanel Background="Gray" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
+                <StackPanel>
+                    <TextBlock Text="" Name="txtCurrentUser" FontWeight="Bold" Margin="10"/>
+                    <Button x:Name="btnLogout" Content="Logout" Click="btnLogout_Click" Margin="0 0 0 20"/>
+                    <Button x:Name="btnHome" Content="Home" Click="btnHome_Click" />
+                    <Button x:Name="btnMovie" Content="Movies" Click="btnHome_Click" />
+                    <Button x:Name="btnGenre" Content="Genres" Click="btnGenre_Click" />
+                </StackPanel>
+            </DockPanel>
+
+            <ContentControl Content="{Binding}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" />
+
+        </Grid>
     </Grid>
+    
+   
 </Window>

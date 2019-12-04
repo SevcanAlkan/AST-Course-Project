@@ -75,6 +75,11 @@ namespace MovieStore.Desktop
         {
             DataContext = _viewModelLocator.GenreViewModel;
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 
