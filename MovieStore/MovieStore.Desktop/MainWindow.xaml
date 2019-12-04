@@ -19,7 +19,31 @@
         <DataTemplate x:Name="genreViewTemplate" DataType="{x:Type viewmodels:GenreViewModel}">
             <views:GenreList DataContext="{Binding}" />
         </DataTemplate>
+
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    
     <Window.Effect>
         <DropShadowEffect/>
     </Window.Effect>
@@ -27,32 +51,107 @@
         <VM:MainWindowViewModel />
     </Window.DataContext>-->
 
-    <Grid>
+    <Grid Background="LightGray">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        
-        <Grid Height="50" VerticalAlignment="Top" Grid.Row="0" Background="#FF3885C5">
+
+        <Grid Height="60" VerticalAlignment="Top" Grid.Row="0" Background="#FF3885C5" x:Name="grdTopBar" Loaded="grdTopBar_Loaded">
             <TextBlock Text="Movie Dubbing Studio Manager" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Sevcan Alkan" VerticalAlignment="Center" FontSize="18"/>
+                <TextBlock x:Name="txtUserName" Text="" VerticalAlignment="Center" FontSize="18"/>
                 <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
-                    <StackPanel Width="150">
-                        <Button Content="Settings"/>
+                    <StackPanel Width="150" Background="#FF3885C5" >
+                        <Button Content="Settings" Foreground="White"/>
                         <Separator/>
-                        <Button Content="Logout"/>
-                        <Button Content="Close" Name="btnClose" Click="btnClose_Click"/>
+                        <Button x:Name="btnLogout" Content="Logout" Foreground="White" Click="btnLogout_Click"/>
+                        <Button x:Name="btnClose" Content="Close" Click="btnClose_Click" Foreground="White"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
         </Grid>
 
-        <Grid Width="200" HorizontalAlignment="Left" Grid.RowSpan="2" Background="#FF1C53B4">
-            
+        <Grid x:Name="grdMenu" Width="60" HorizontalAlignment="Left" Grid.RowSpan="2" Background="#FF1C53B4" Panel.ZIndex="1000">
+            <StackPanel>
+                <Grid Height="60" Background="White">
+                    <Button x:Name="btnCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="btnCloseMenu_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Foreground="#FF1C53B4" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="btnOpenMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Margin="0,0,0,0" Click="btnOpenMenu_Click">
+                        <materialDesign:PackIcon Kind="Menu" Foreground="#FF1C53B4" Width="25" Height="25"/>
+                    </Button>
+                </Grid>
+
+                <ListView Foreground="White" Background="#FF1C53B4" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                    <ListViewItem x:Name="liHome" Height="60" PreviewMouseLeftButtonDown="liHome_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="liProject" Height="60" PreviewMouseLeftButtonDown="liProject_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Text" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Projects" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="liMovie" Height="60" PreviewMouseLeftButtonDown="liMovie_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="MovieRoll" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Movies" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="liUser" Height="60" PreviewMouseLeftButtonDown="liUser_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Users" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="liGenre" Height="60" PreviewMouseLeftButtonDown="liGenre_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="DramaMasks" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Genres" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="liLanguage" Height="60" PreviewMouseLeftButtonDown="liLanguage_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Language" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Languages" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="liPerson" Height="60" PreviewMouseLeftButtonDown="liPerson_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Human" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Persons" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="liPublisher" Height="60" PreviewMouseLeftButtonDown="liPublisher_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="CamcorderBox" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Publishers" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="liTag" Height="60" PreviewMouseLeftButtonDown="liTag_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Tag" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Tags" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
         </Grid>
-        
-        <Grid Grid.Row="1">
+
+        <Grid Grid.Row="1" Margin="60 0 0 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -68,20 +167,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <DockPanel Background="Gray" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
-                <StackPanel>
-                    <TextBlock Text="" Name="txtCurrentUser" FontWeight="Bold" Margin="10"/>
-                    <Button x:Name="btnLogout" Content="Logout" Click="btnLogout_Click" Margin="0 0 0 20"/>
-                    <Button x:Name="btnHome" Content="Home" Click="btnHome_Click" />
-                    <Button x:Name="btnMovie" Content="Movies" Click="btnHome_Click" />
-                    <Button x:Name="btnGenre" Content="Genres" Click="btnGenre_Click" />
-                </StackPanel>
-            </DockPanel>
-
-            <ContentControl Content="{Binding}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" />
+            <ContentControl Content="{Binding}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="5" />
 
         </Grid>
     </Grid>
-    
-   
+
+
 </Window>
