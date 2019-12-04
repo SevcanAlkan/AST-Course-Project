@@ -1,4 +1,5 @@
-﻿using MovieStore.Data;
+﻿using MovieStore.Core.Validation;
+using MovieStore.Data;
 using MovieStore.Data.Service;
 using MovieStore.Data.SubStructure;
 using MovieStore.Desktop.ViewModel;
@@ -10,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -26,32 +29,72 @@ namespace MovieStore.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
-        public User CurrentUser { get; set; }
-    
+        private User _currentUser;
+        private User CurrentUser
+        {
+            get
+            {
+                if (this._currentUser == null)
+                {
+                    this._currentUser = new User();
+                }
+
+                return this._currentUser;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this._currentUser = value;
+                }
+            }
+        }
+
         private ViewModelLocator _viewModelLocator;
 
         public MainWindow()
         {
             _viewModelLocator = new ViewModelLocator();
-           
+
             InitializeComponent();
         }
 
-        public void UpdateUser()
+        public void Login(User user)
         {
-            //if(CurrentUser != null)
-            //{
-            //    this.txtCurrentUser.Text = this.CurrentUser.DisplayName;
-            //    this.btnLogout.IsEnabled = true;
-            //}
-            //else
-            //{
-            //    this.txtCurrentUser.Text = "";
-            //    this.btnLogout.IsEnabled = false;
-            //}
+            if (user != null && !user.Id.IsNotValid())
+            {
+                this.CurrentUser = user;
+            }
+
+            if (!CurrentUser.Id.IsNotValid())
+            {
+                this.txtUserName.Text = this.CurrentUser.DisplayName;
+                this.btnLogout.IsEnabled = true;
+                this.btnSettings.IsEnabled = true;
+
+                this.btnOpenMenu.IsEnabled = true;
+                this.liNavbar.IsEnabled = true;
+            }
+            else
+            {
+                this.Logout();
+            }
         }
 
-        private void Close()
+        private void Logout()
+        {
+            this.CurrentUser = new User();
+            this.DataContext = _viewModelLocator.LoginViewModel;
+
+            this.txtUserName.Text = "";
+            this.btnLogout.IsEnabled = false;
+            this.btnSettings.IsEnabled = false;
+
+            this.btnOpenMenu.IsEnabled = false;
+            this.liNavbar.IsEnabled = false;
+        }
+
+        private void CloseApp()
         {
             //Do Someting.
 
@@ -60,20 +103,13 @@ namespace MovieStore.Desktop
             Application.Current.Shutdown();
         }
 
-        private void Logout()
-        {
-            this.CurrentUser = null;
-            this.UpdateUser();
-            this.DataContext = _viewModelLocator.LoginViewModel;
-        }
-        
         #region Generic Events
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (CurrentUser == null)
+            if (CurrentUser.Id.IsNotValid())
             {
-                DataContext = _viewModelLocator.LoginViewModel;
+                this.Logout();
             }
         }
 
@@ -102,12 +138,23 @@ namespace MovieStore.Desktop
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.CloseApp();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             this.Logout();
+        }
+
+        private void Window_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (this.grdMenu.Width > 100)
+            {
+                //https://joshsmithonwpf.wordpress.com/2007/03/09/how-to-programmatically-click-a-button/
+                ButtonAutomationPeer peer = new ButtonAutomationPeer(this.btnCloseMenu);
+                IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                invokeProv.Invoke();
+            }
         }
 
         #endregion
@@ -159,9 +206,8 @@ namespace MovieStore.Desktop
             DataContext = _viewModelLocator.GenreViewModel;
         }
 
-        #endregion
 
-
+        #endregion       
     }
 
 

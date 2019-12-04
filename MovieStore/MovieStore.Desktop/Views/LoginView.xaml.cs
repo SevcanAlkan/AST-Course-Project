@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -24,6 +26,8 @@ namespace MovieStore.Desktop.Views
         public LoginView()
         {
             InitializeComponent();
+
+            this.txtUserName.Focus();
         }
 
         private LoginViewModel _vm
@@ -36,14 +40,14 @@ namespace MovieStore.Desktop.Views
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (this.txtUserName == null || this.txtUserName.Text == "" || this.txtPasword == null || this.txtPasword.Text == "")
+            if (this.txtUserName == null || this.txtUserName.Text == "" || this.txtPasword == null || !this.txtPasword.Password.Any())
             {
                 MessageBox.Show("You must enter Username and Password!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             string userName = this.txtUserName.Text.Trim();
-            string password = this.txtPasword.Text.Trim();
+            string password = this.txtPasword.Password.ToString().Trim();
 
             var result = _vm.Login(userName, password);
 
@@ -56,9 +60,18 @@ namespace MovieStore.Desktop.Views
             var window = Window.GetWindow(this) as MainWindow;
             if (window != null)
             {
-                window.CurrentUser = result;
-                window.UpdateUser();
+                window.Login(result);
                 window.DataContext = null;
+            }
+        }
+
+        private void userPageGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ButtonAutomationPeer peer = new ButtonAutomationPeer(this.btnLogin);
+                IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                invokeProv.Invoke();
             }
         }
     }
