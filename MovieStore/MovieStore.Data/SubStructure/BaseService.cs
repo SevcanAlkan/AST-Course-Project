@@ -40,7 +40,7 @@ namespace MovieStore.Data.SubStructure
         {
             try
             {
-                if (Validation.IsNullOrEmpty(id))
+                if (id.IsNotValid())
                     return null;
 
                 return await Repository.GetByID(id);
