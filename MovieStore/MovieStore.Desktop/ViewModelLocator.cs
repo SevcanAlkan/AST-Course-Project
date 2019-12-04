@@ -15,5 +15,10 @@ namespace MovieStore.Desktop
         {
             get { return IocKernel.Get<LoginViewModel>(); } 
         }
+
+        public GenreViewModel GenreViewModel
+        {
+            get { return IocKernel.Get<GenreViewModel>(); }
+        }
     }
 }

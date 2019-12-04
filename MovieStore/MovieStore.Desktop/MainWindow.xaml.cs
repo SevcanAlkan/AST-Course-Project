@@ -39,29 +39,35 @@ namespace MovieStore.Desktop
 
         public void UpdateUser()
         {
-            if(CurrentUser != null)
-            {
-                this.txtCurrentUser.Text = this.CurrentUser.DisplayName;
-                this.btnLogout.IsEnabled = true;
-            }
-            else
-            {
-                this.txtCurrentUser.Text = "";
-                this.btnLogout.IsEnabled = false;
-            }
+            //if(CurrentUser != null)
+            //{
+            //    this.txtCurrentUser.Text = this.CurrentUser.DisplayName;
+            //    this.btnLogout.IsEnabled = true;
+            //}
+            //else
+            //{
+            //    this.txtCurrentUser.Text = "";
+            //    this.btnLogout.IsEnabled = false;
+            //}
         }
 
-        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        private void Close()
         {
-            CurrentUser = null;
+            //Do Someting.
+
+
+            //Then close the app.
+            Application.Current.Shutdown();
+        }
+
+        private void Logout()
+        {
+            this.CurrentUser = null;
             this.UpdateUser();
-            DataContext = _viewModelLocator.LoginViewModel;
+            this.DataContext = _viewModelLocator.LoginViewModel;
         }
-
-        private void btnHome_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new HomeViewModel();
-        }
+        
+        #region Generic Events
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -70,6 +76,92 @@ namespace MovieStore.Desktop
                 DataContext = _viewModelLocator.LoginViewModel;
             }
         }
+
+        private void grdTopBar_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.grdTopBar.MouseDown += delegate { DragMove(); };
+        }
+
+        private void btnCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            this.btnOpenMenu.Visibility = Visibility.Visible;
+            this.btnCloseMenu.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnOpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            this.btnCloseMenu.Visibility = Visibility.Visible;
+            this.btnOpenMenu.Visibility = Visibility.Collapsed;
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Logout();
+        }
+
+        #endregion
+
+        #region Nav Bar Click Events
+
+        private void liHome_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new HomeViewModel();
+        }
+
+        private void liProject_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void liMovie_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void liUser_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void liLanguage_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void liTag_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void liPublisher_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void liPerson_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void liGenre_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = _viewModelLocator.GenreViewModel;
+        }
+
+        #endregion
+
+
     }
 
 
