@@ -14,10 +14,10 @@
             <views:LoginView DataContext="{Binding LoginViewModel, Source={StaticResource ViewModelLocator}}" />
         </DataTemplate>
         <DataTemplate x:Name="homeViewTemplate" DataType="{x:Type viewmodels:HomeViewModel}">
-            <views:HomeView DataContext="{Binding}" />
+            <views:HomeView DataContext="{Binding HomeViewModel, Source={StaticResource ViewModelLocator}}" />
         </DataTemplate>
         <DataTemplate x:Name="genreViewTemplate" DataType="{x:Type viewmodels:GenreViewModel}">
-            <views:GenreList DataContext="{Binding}" />
+            <views:GenreList DataContext="{Binding GenreViewModel, Source={StaticResource ViewModelLocator}}" />
         </DataTemplate>
 
         <Storyboard x:Key="MenuOpen">
@@ -167,7 +167,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ContentControl Content="{Binding}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="5" />
+            <ContentControl x:Name="windowContent" Content="{Binding}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="5" />
 
         </Grid>
     </Grid>

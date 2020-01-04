@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MovieStore.Desktop.ViewModel;
+using MovieStore.UI.Helper;
+using MovieStore.UI.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,47 +26,21 @@ namespace MovieStore.Desktop.Views
         public HomeView()
         {
             InitializeComponent();
-            LoadCollection();
+
+            grdMain.AddFilter(FilterHelper.New("serchBox", 1, UI.Enums.FilterTypeEnum.TextBox, "Search"));
+            grdMain.AddFilter(FilterHelper.New("SearchByName", 1, UI.Enums.FilterTypeEnum.TextBox, "Search By Name"));
+
+            grdMain.Load();
         }
 
-        private void LoadCollection()
+        private HomeViewModel _vm
         {
-            //Movies = new ObservableCollection<Item>();
-            //Movies.Add(new Item() { Name = "Username", Length = 100, Required = true });
-            //Movies.Add(new Item() { Name = "Password", Length = 80, Required = true });
-            //Movies.Add(new Item() { Name = "City", Length = 100, Required = false });
-            //Movies.Add(new Item() { Name = "State", Length = 40, Required = false });
-            //Movies.Add(new Item() { Name = "Zipcode", Length = 60, Required = false });
-
-            //var u1 = CreateMovieItem();
-            //var u2 = CreateMovieItem();
-
-            //grdMovies.VerticalAlignment = VerticalAlignment.Top;
-            //grdMovies.HorizontalAlignment = HorizontalAlignment.Left;
-
-            //grdMovies.ColumnDefinitions.Add(new ColumnDefinition());
-            //grdMovies.ColumnDefinitions.Add(new ColumnDefinition());
-            //grdMovies.ColumnDefinitions.Add(new ColumnDefinition());
-            //grdMovies.ColumnDefinitions.Add(new ColumnDefinition());
-
-            //grdMovies.RowDefinitions.Add(new RowDefinition());
-            //grdMovies.RowDefinitions.Add(new RowDefinition());
-            //grdMovies.RowDefinitions.Add(new RowDefinition());
-            ////Write an method to configure the grid. The method will take recordAmount parameter for calculate rows and columns.
-            //grdMovies.UpdateLayout();
-
-            //Grid.SetRow(u1, 0);
-            //Grid.SetRow(u2, 0);
-
-            //Grid.SetColumn(u1, 0);
-            //Grid.SetColumn(u2, 1);
-
-            //grdMovies.Children.Add(u1);
-            //grdMovies.Children.Add(u2);
-
-
-            //grdMovies.UpdateLayout();
-
+            get
+            {
+                return (HomeViewModel)this.DataContext;
+            }
         }
+
+
     }   
 }

@@ -38,7 +38,6 @@
 
                 #endregion
 
-
                 #region Languages
 
                 context.Languages.AddOrUpdate(p => p.Code, new Language() { Id = Guid.NewGuid(), Code = "ab", Name = "Abkhaz", NativeName = "аҧсуа" });

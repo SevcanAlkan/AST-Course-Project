@@ -83,9 +83,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Components\ucGrid.xaml.cs">
-      <DependentUpon>ucGrid.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DI\IocConfiguration.cs" />
     <Compile Include="DI\IocKernel.cs" />
     <Compile Include="Helper\UserControlCreator.cs" />
@@ -112,10 +109,6 @@
     <Compile Include="Views\MovieList.xaml.cs">
       <DependentUpon>MovieList.xaml</DependentUpon>
     </Compile>
-    <Page Include="Components\ucGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -128,10 +121,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Components\MovieItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\GenreDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,9 +147,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\MovieItem.xaml.cs">
-      <DependentUpon>MovieItem.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -199,6 +185,10 @@
     <ProjectReference Include="..\MovieStore.Domain\MovieStore.Domain.csproj">
       <Project>{3d94813e-0e44-4688-889f-29abd70dfa09}</Project>
       <Name>MovieStore.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieStore.UI\MovieStore.UI.csproj">
+      <Project>{23a26d46-5e2f-43ae-9840-345db60cac23}</Project>
+      <Name>MovieStore.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

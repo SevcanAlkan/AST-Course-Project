@@ -20,5 +20,10 @@ namespace MovieStore.Desktop
         {
             get { return IocKernel.Get<GenreViewModel>(); }
         }
+
+        public HomeViewModel HomeViewModel
+        {
+            get { return IocKernel.Get<HomeViewModel>(); }
+        }
     }
 }

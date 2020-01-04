@@ -28,6 +28,10 @@ namespace MovieStore.Desktop.Views
             InitializeComponent();
 
             this.txtUserName.Focus();
+
+            //REMOWE
+            this.txtUserName.Text = "test";
+            this.txtPasword.Password = "test";
         }
 
         private LoginViewModel _vm

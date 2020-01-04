@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieStore.Data", "MovieSto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieStore.Domain", "MovieStore.Domain\MovieStore.Domain.csproj", "{3D94813E-0E44-4688-889F-29ABD70DFA09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieStore.UI", "MovieStore.UI\MovieStore.UI.csproj", "{23A26D46-5E2F-43AE-9840-345DB60CAC23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,26 @@ Global
 		{3D94813E-0E44-4688-889F-29ABD70DFA09}.Release|x64.Build.0 = Release|Any CPU
 		{3D94813E-0E44-4688-889F-29ABD70DFA09}.Release|x86.ActiveCfg = Release|Any CPU
 		{3D94813E-0E44-4688-889F-29ABD70DFA09}.Release|x86.Build.0 = Release|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Debug|ARM.Build.0 = Debug|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Debug|x64.Build.0 = Debug|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Debug|x86.Build.0 = Debug|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Release|ARM.ActiveCfg = Release|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Release|ARM.Build.0 = Release|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Release|ARM64.Build.0 = Release|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Release|x64.ActiveCfg = Release|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Release|x64.Build.0 = Release|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Release|x86.ActiveCfg = Release|Any CPU
+		{23A26D46-5E2F-43AE-9840-345DB60CAC23}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

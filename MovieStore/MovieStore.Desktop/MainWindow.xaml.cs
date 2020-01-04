@@ -85,6 +85,7 @@ namespace MovieStore.Desktop
         {
             this.CurrentUser = new User();
             this.DataContext = _viewModelLocator.LoginViewModel;
+            this.windowContent.Focus();
 
             this.txtUserName.Text = "";
             this.btnLogout.IsEnabled = false;
@@ -110,6 +111,10 @@ namespace MovieStore.Desktop
             if (CurrentUser.Id.IsNotValid())
             {
                 this.Logout();
+            }
+            else
+            {
+                DataContext = _viewModelLocator.HomeViewModel;
             }
         }
 
@@ -163,7 +168,7 @@ namespace MovieStore.Desktop
 
         private void liHome_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DataContext = new HomeViewModel();
+            DataContext = _viewModelLocator.HomeViewModel;
         }
 
         private void liProject_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
