@@ -18,10 +18,8 @@ namespace MovieStore.Desktop.DI
         {
             Bind<MovieStoreDbContext>().ToSelf().InSingletonScope();
 
-
             Bind(typeof(IRepository<>)).To(typeof(Repository<>)).InTransientScope();
             Bind(typeof(IBaseService<>)).To(typeof(BaseService<>)).InTransientScope();
-
 
             Bind<IUserService>().To<UserService>().InTransientScope().WithConstructorArgument(typeof(Type),
               x => x.Request.ParentContext.Plan.Type);
