@@ -1,4 +1,5 @@
-﻿using MovieStore.UI.Model;
+﻿using MovieStore.Domain;
+using MovieStore.UI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,9 @@ namespace MovieStore.UI
     public partial class Grid : UserControl
     {
         private List<ToolbarFilter> Filters { get; set; }
+
+        //For test friltering
+        public List<Genre> genres { get; set; }
 
         public Grid()
         {
@@ -56,7 +60,14 @@ namespace MovieStore.UI
 
         private void loadGrid()
         {
+            this.genres = new List<Genre>();
+            genres.Add(new Genre() { Name = "Action", Description = "Action Movies" });
+            genres.Add(new Genre() { Name = "Comedy", Description = "Action Movies" });
+            genres.Add(new Genre() { Name = "Romantic Comedy", Description = "Action Movies" });
+            genres.Add(new Genre() { Name = "Dram", Description = "Action Movies" });
+            genres.Add(new Genre() { Name = "Crime", Description = "Police" });
 
+            this.dataGrid.ItemsSource = this.genres;
         }
 
         public void Refresh()
@@ -85,7 +96,7 @@ namespace MovieStore.UI
                     this.AddFilter(item);
                 }
             }
-        }
+        }        
 
         #endregion
     }

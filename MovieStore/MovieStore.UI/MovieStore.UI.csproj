@@ -61,6 +61,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MovieStore.Domain\MovieStore.Domain.csproj">
+      <Project>{3d94813e-0e44-4688-889f-29abd70dfa09}</Project>
+      <Name>MovieStore.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
