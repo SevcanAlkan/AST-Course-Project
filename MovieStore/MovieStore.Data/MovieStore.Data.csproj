@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201911121004147_T5.designer.cs">
       <DependentUpon>201911121004147_T5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001101750507_T172.cs" />
+    <Compile Include="Migrations\202001101750507_T172.designer.cs">
+      <DependentUpon>202001101750507_T172.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MovieStoreDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911121004147_T5.resx">
       <DependentUpon>201911121004147_T5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001101750507_T172.resx">
+      <DependentUpon>202001101750507_T172.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

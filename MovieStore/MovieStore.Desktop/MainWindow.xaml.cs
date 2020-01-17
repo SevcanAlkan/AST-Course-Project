@@ -21,6 +21,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MovieStore.Core.Validation;
+using MovieStore.Desktop.Helper;
+using MovieStore.Desktop.DI;
 
 namespace MovieStore.Desktop
 {
@@ -50,6 +53,8 @@ namespace MovieStore.Desktop
             }
         }
 
+        public Guid Id { get; set; }
+
         private ViewModelLocator _viewModelLocator;
 
         public MainWindow()
@@ -64,6 +69,7 @@ namespace MovieStore.Desktop
             if (user != null && !user.Id.IsNotValid())
             {
                 this.CurrentUser = user;
+                UserInfo.UserId = user.Id;
             }
 
             if (!CurrentUser.Id.IsNotValid())
@@ -84,6 +90,7 @@ namespace MovieStore.Desktop
         private void Logout()
         {
             this.CurrentUser = new User();
+            UserInfo.UserId = Guid.Empty;
             this.DataContext = _viewModelLocator.LoginViewModel;
             this.windowContent.Focus();
 
@@ -212,7 +219,21 @@ namespace MovieStore.Desktop
         }
 
 
-        #endregion       
+        #endregion
+
+        #region Screen Switch Functions
+
+        public void LoadGenreDetail()
+        {
+            DataContext = _viewModelLocator.GenreDetailViewModel;
+        }
+
+        public void LoadGenreList()
+        {
+            DataContext = _viewModelLocator.GenreViewModel;
+        }
+
+        #endregion
     }
 
 

@@ -27,7 +27,10 @@ namespace MovieStore.Desktop.DI
              x => x.Request.ParentContext.Plan.Type);
 
             Bind<LoginViewModel>().ToSelf().InTransientScope();
+
             Bind<GenreViewModel>().ToSelf().InTransientScope();
+            Bind<GenreDetailViewModel>().ToSelf().InTransientScope();
+
             Bind<HomeViewModel>().ToSelf().InTransientScope();
         }
     }

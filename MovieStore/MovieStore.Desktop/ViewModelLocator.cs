@@ -13,13 +13,18 @@ namespace MovieStore.Desktop
 
         public LoginViewModel LoginViewModel
         {
-            get { return IocKernel.Get<LoginViewModel>(); } 
+            get { return IocKernel.Get<LoginViewModel>(); }
         }
 
         public GenreViewModel GenreViewModel
         {
             get { return IocKernel.Get<GenreViewModel>(); }
         }
+
+        public GenreDetailViewModel GenreDetailViewModel
+        {
+            get { return IocKernel.Get<GenreDetailViewModel>(); }
+        }       
 
         public HomeViewModel HomeViewModel
         {

@@ -13,6 +13,10 @@ namespace MovieStore.Core.Validation
             return value == null;
         }
 
+        public static bool IsNotValid(this Guid? value)
+        {
+            return value == null || value == Guid.Empty;
+        }
         public static bool IsNotValid(this Guid value)
         {
             return value == null || value == Guid.Empty;

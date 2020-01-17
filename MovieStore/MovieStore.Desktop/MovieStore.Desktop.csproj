@@ -86,6 +86,8 @@
     <Compile Include="DI\IocConfiguration.cs" />
     <Compile Include="DI\IocKernel.cs" />
     <Compile Include="Helper\UserControlCreator.cs" />
+    <Compile Include="Helper\UserInfo.cs" />
+    <Compile Include="ViewModel\GenreDetailViewModel.cs" />
     <Compile Include="ViewModel\GenreViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

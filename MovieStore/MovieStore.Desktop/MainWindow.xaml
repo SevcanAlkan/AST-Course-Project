@@ -19,6 +19,9 @@
         <DataTemplate x:Name="genreViewTemplate" DataType="{x:Type viewmodels:GenreViewModel}">
             <views:GenreList DataContext="{Binding GenreViewModel, Source={StaticResource ViewModelLocator}}" />
         </DataTemplate>
+        <DataTemplate x:Name="genreDetailViewTemplate" DataType="{x:Type viewmodels:GenreDetailViewModel}">
+            <views:GenreDetail DataContext="{Binding GenreDetailViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
 
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
