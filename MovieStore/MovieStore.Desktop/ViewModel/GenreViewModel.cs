@@ -1,4 +1,5 @@
-﻿using MovieStore.Data.Service;
+﻿using MovieStore.Core.Validation;
+using MovieStore.Data.Service;
 using MovieStore.Domain;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,11 @@ namespace MovieStore.Desktop.ViewModel
             var result = _service.GetAll();
 
             return result;
+        }
+
+        public async Task<bool> Delete(Guid id, Guid userId)
+        {
+            return await _service.Delete(id, userId);
         }
     }
 }

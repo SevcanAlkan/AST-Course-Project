@@ -73,6 +73,7 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -85,6 +86,8 @@
     <Compile Include="DI\IocConfiguration.cs" />
     <Compile Include="DI\IocKernel.cs" />
     <Compile Include="Helper\UserControlCreator.cs" />
+    <Compile Include="Helper\UserInfo.cs" />
+    <Compile Include="ViewModel\GenreDetailViewModel.cs" />
     <Compile Include="ViewModel\GenreViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -120,10 +123,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Components\MovieItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\GenreDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,9 +149,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\MovieItem.xaml.cs">
-      <DependentUpon>MovieItem.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -192,11 +188,18 @@
       <Project>{3d94813e-0e44-4688-889f-29abd70dfa09}</Project>
       <Name>MovieStore.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MovieStore.UI\MovieStore.UI.csproj">
+      <Project>{23a26d46-5e2f-43ae-9840-345db60cac23}</Project>
+      <Name>MovieStore.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\SampleCover.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\icon.png" />
+    <Resource Include="Assets\icon2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

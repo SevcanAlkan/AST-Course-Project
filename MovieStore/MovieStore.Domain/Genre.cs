@@ -12,7 +12,7 @@ namespace MovieStore.Domain
     {
         [Required, MaxLength(100)]
         public string Name { get; set; }
-        [MaxLength(500)]
+        [MaxLength(1000)]
         public string Description { get; set; }
     }
 
