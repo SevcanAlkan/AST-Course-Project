@@ -27,11 +27,11 @@ namespace MovieStore.Desktop.Views
             InitializeComponent();
         }
 
-        private GenreViewModel _vm
+        private GenreListViewModel _vm
         {
             get
             {
-                return (GenreViewModel)this.DataContext;
+                return (GenreListViewModel)this.DataContext;
             }
         }
 
@@ -120,7 +120,7 @@ namespace MovieStore.Desktop.Views
             var rec = this.grdList.SelectedItem;
             if(rec != null && rec is Genre)
             {
-                await _vm.Delete((rec as Genre).Id, _window.UserId);
+                await _vm.Delete((rec as Genre).Id);
                 this.Load();
                 this.ConfigureGrid();
             }

@@ -35,10 +35,17 @@ namespace MovieStore.Desktop.Views
             }
         }
 
+        private MainWindow _window
+        {
+            get
+            {
+                return Window.GetWindow(this) as MainWindow;
+            }
+        }
+
         private void LoadData()
         {
-            var window = Window.GetWindow(this) as MainWindow;
-            _vm.LoadRec(window.Id);
+            _vm.LoadRec(_window.Id);
 
             if (_vm.Rec != null)
             {
@@ -49,8 +56,6 @@ namespace MovieStore.Desktop.Views
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            //Add validation
-
             _vm.Rec.Name = txtName.Text;
             _vm.Rec.Description = txtDescription.Text;
 
@@ -80,11 +85,10 @@ namespace MovieStore.Desktop.Views
         {
             _vm.Clean();
 
-            var window = Window.GetWindow(this) as MainWindow;
-            if (window != null)
+            if (_window != null)
             {
-                window.DataContext = null;
-                window.LoadGenreList();
+                _window.DataContext = null;
+                _window.LoadGenreList();
             }
         }
     }

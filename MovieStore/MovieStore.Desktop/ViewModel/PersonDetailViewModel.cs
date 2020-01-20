@@ -10,23 +10,23 @@ using System.Threading.Tasks;
 
 namespace MovieStore.Desktop.ViewModel
 {
-    public class GenreDetailViewModel
+    public class PersonDetailViewModel
     {
-        private IGenreService _service;
+        private IPersonService _service;
 
-        public GenreDetailViewModel(IGenreService service)
+        public PersonDetailViewModel(IPersonService service)
         {
             this._service = service;
         }
 
         public Guid Id { get; set; }
 
-        public Genre Rec { get; set; }
+        public Person Rec { get; set; }
 
         public void LoadRec(Guid id)
         {
             this.Id = id;
-            Rec = new Genre();
+            Rec = new Person();
 
             if (Id != null && !Id.IsNotValid())
             {
@@ -42,15 +42,15 @@ namespace MovieStore.Desktop.ViewModel
         public void Clean()
         {
             Id = Guid.Empty;
-            Rec = new Genre();
+            Rec = new Person();
         }
 
-        public async Task<Genre> Add()
+        public async Task<Person> Add()
         {
             return await _service.Add(Rec, UserInfo.UserId);
         }
 
-        public async Task<Genre> Update()
+        public async Task<Person> Update()
         {
             return await _service.Update(Id, Rec, UserInfo.UserId);
         }
