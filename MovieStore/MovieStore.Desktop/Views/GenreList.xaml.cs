@@ -35,6 +35,14 @@ namespace MovieStore.Desktop.Views
             }
         }
 
+        private MainWindow _window
+        {
+            get
+            {
+                return Window.GetWindow(this) as MainWindow;
+            }
+        }
+
         private void Load()
         {
             var data = _vm.Get();
@@ -44,8 +52,12 @@ namespace MovieStore.Desktop.Views
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            Load();
+            this.Load();
+            this.ConfigureGrid();
+        }
 
+        private void ConfigureGrid()
+        {
             foreach (var column in this.grdList.Columns)
             {
                 if (column.Header.ToString() == "Id")
@@ -80,34 +92,38 @@ namespace MovieStore.Desktop.Views
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             var rec = this.grdList.SelectedItem;
-            var window = Window.GetWindow(this) as MainWindow;
 
-            if (window != null)
+            if (_window != null)
             {
-                if (rec != null)
+                if (rec != null && rec is Genre)
                 {
-                    window.Id = (rec as Genre).Id;
+                    _window.Id = (rec as Genre).Id;
                 }
 
-                window.DataContext = null;
-                window.LoadGenreDetail();
+                _window.DataContext = null;
+                _window.LoadGenreDetail();
             }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            var window = Window.GetWindow(this) as MainWindow;
-            if (window != null)
+        {            
+            if (_window != null)
             {
-                window.Id = Guid.Empty;
-                window.DataContext = null;
-                window.LoadGenreDetail();
+                _window.Id = Guid.Empty;
+                _window.DataContext = null;
+                _window.LoadGenreDetail();
             }
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            var rec = this.grdList.SelectedItem;
+            if(rec != null && rec is Genre)
+            {
+                await _vm.Delete((rec as Genre).Id, _window.UserId);
+                this.Load();
+                this.ConfigureGrid();
+            }
         }
     }
 }

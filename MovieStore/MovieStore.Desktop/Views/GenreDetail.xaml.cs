@@ -47,7 +47,7 @@ namespace MovieStore.Desktop.Views
             }
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
             //Add validation
 
@@ -56,11 +56,11 @@ namespace MovieStore.Desktop.Views
 
             if (_vm.Id == null || _vm.Id.IsNotValid())
             {
-                _vm.Add();
+                await _vm.Add();
             }
             else
             {
-              _vm.Update();
+                await _vm.Update();
             }
 
             UnLoadPage();

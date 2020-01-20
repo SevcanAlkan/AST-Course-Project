@@ -30,7 +30,8 @@ namespace MovieStore.Data.Service
             {
                 foreach (var item in list)
                 {
-                    item.Description = item.Description.Substring(0, 100) + "...";
+                    int maxLength = item.Description.Length >= 100 ? 99 : item.Description.Length;
+                    item.Description = item.Description.Substring(0, maxLength) + "...";
                 }
             }
 

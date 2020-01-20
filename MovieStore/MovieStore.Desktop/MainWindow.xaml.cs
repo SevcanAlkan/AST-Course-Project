@@ -54,6 +54,13 @@ namespace MovieStore.Desktop
         }
 
         public Guid Id { get; set; }
+        public Guid UserId
+        {
+            get
+            {
+                return CurrentUser.Id;
+            }
+        }
 
         private ViewModelLocator _viewModelLocator;
 

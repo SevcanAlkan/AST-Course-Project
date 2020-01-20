@@ -50,14 +50,14 @@ namespace MovieStore.Desktop.ViewModel
             Rec = new Genre();
         }
 
-        public async void Add()
+        public async Task<Genre> Add()
         {
-            _service.Add(Rec, UserInfo.UserId);
+            return await _service.Add(Rec, UserInfo.UserId);
         }
 
-        public async void Update()
+        public async Task<Genre> Update()
         {
-           await _service.Update(Id, Rec, UserInfo.UserId);
+            return await _service.Update(Id, Rec, UserInfo.UserId);
         }
     }
 }
