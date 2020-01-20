@@ -18,20 +18,20 @@ using System.Windows.Shapes;
 namespace MovieStore.Desktop.Views
 {
     /// <summary>
-    /// Interaction logic for GenreDetail.xaml
+    /// Interaction logic for PublisherDetail.xaml
     /// </summary>
-    public partial class GenreDetail : UserControl
+    public partial class PublisherDetail : UserControl
     {
-        public GenreDetail()
+        public PublisherDetail()
         {
             InitializeComponent();
         }
 
-        private GenreDetailViewModel _vm
+        private PublisherDetailViewModel _vm
         {
             get
             {
-                return (GenreDetailViewModel)this.DataContext;
+                return (PublisherDetailViewModel)this.DataContext;
             }
         }
 
@@ -50,14 +50,12 @@ namespace MovieStore.Desktop.Views
             if (_vm.Rec != null)
             {
                 this.txtName.Text = _vm.Rec.Name;
-                this.txtDescription.Text = _vm.Rec.Description;
             }
         }
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
             _vm.Rec.Name = txtName.Text;
-            _vm.Rec.Description = txtDescription.Text;
 
             if (_vm.Id == null || _vm.Id.IsNotValid())
             {
@@ -88,7 +86,7 @@ namespace MovieStore.Desktop.Views
             if (_window != null)
             {
                 _window.DataContext = null;
-                _window.LoadGenreList();
+                _window.LoadPublisherList();
             }
         }
     }

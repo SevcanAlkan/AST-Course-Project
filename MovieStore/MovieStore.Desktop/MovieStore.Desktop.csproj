@@ -85,10 +85,21 @@
     </ApplicationDefinition>
     <Compile Include="DI\IocConfiguration.cs" />
     <Compile Include="DI\IocKernel.cs" />
+    <Compile Include="GenreListViewModel.cs" />
     <Compile Include="Helper\UserControlCreator.cs" />
     <Compile Include="Helper\UserInfo.cs" />
+    <Compile Include="ViewModel\UserDetailViewModel.cs" />
+    <Compile Include="ViewModel\PublisherDetailViewModel.cs" />
+    <Compile Include="ViewModel\PersonDetailViewModel.cs" />
+    <Compile Include="ViewModel\TagDetailViewModel.cs" />
+    <Compile Include="ViewModel\LanguageDetailViewModel.cs" />
     <Compile Include="ViewModel\GenreDetailViewModel.cs" />
-    <Compile Include="ViewModel\GenreViewModel.cs" />
+    <Compile Include="ViewModel\PublisherListViewModel.cs" />
+    <Compile Include="ViewModel\UserListViewModel.cs" />
+    <Compile Include="ViewModel\TagListViewModel.cs" />
+    <Compile Include="ViewModel\LanguageListViewModel.cs" />
+    <Compile Include="ViewModel\PersonListViewModel.cs" />
+    <Compile Include="ViewModel\GenreListViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -102,6 +113,12 @@
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LanguageDetail.xaml.cs">
+      <DependentUpon>LanguageDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LanguageList.xaml.cs">
+      <DependentUpon>LanguageList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -110,6 +127,30 @@
     </Compile>
     <Compile Include="Views\MovieList.xaml.cs">
       <DependentUpon>MovieList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonDetail.xaml.cs">
+      <DependentUpon>PersonDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonList.xaml.cs">
+      <DependentUpon>PersonList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PublisherDetail.xaml.cs">
+      <DependentUpon>PublisherDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PublisherList.xaml.cs">
+      <DependentUpon>PublisherList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TagDetail.xaml.cs">
+      <DependentUpon>TagDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TagList.xaml.cs">
+      <DependentUpon>TagList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserDetail.xaml.cs">
+      <DependentUpon>UserDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserList.xaml.cs">
+      <DependentUpon>UserList.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +176,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LanguageDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LanguageList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,6 +193,38 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MovieList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PublisherDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PublisherList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TagDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TagList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

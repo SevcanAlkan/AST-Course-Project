@@ -53,14 +53,7 @@ namespace MovieStore.Desktop
             }
         }
 
-        public Guid Id { get; set; }
-        public Guid UserId
-        {
-            get
-            {
-                return CurrentUser.Id;
-            }
-        }
+        public Guid Id { get; set; }     
 
         private ViewModelLocator _viewModelLocator;
 
@@ -197,32 +190,32 @@ namespace MovieStore.Desktop
 
         private void liUser_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            DataContext = _viewModelLocator.UserListViewModel;
         }
 
         private void liLanguage_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            DataContext = _viewModelLocator.LanguageListViewModel;
         }
 
         private void liTag_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            DataContext = _viewModelLocator.TagListViewModel;
         }
 
         private void liPublisher_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            DataContext = _viewModelLocator.PublisherListViewModel;
         }
 
         private void liPerson_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            DataContext = _viewModelLocator.PersonListViewModel;
         }
 
         private void liGenre_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DataContext = _viewModelLocator.GenreViewModel;
+            DataContext = _viewModelLocator.GenreListViewModel;
         }
 
 
@@ -234,10 +227,54 @@ namespace MovieStore.Desktop
         {
             DataContext = _viewModelLocator.GenreDetailViewModel;
         }
-
         public void LoadGenreList()
         {
-            DataContext = _viewModelLocator.GenreViewModel;
+            DataContext = _viewModelLocator.GenreListViewModel;
+        }
+
+        public void LoadLanguageDetail()
+        {
+            DataContext = _viewModelLocator.LanguageDetailViewModel;
+        }
+        public void LoadLanguageList()
+        {
+            DataContext = _viewModelLocator.LanguageListViewModel;
+        }
+
+        public void LoadPersonDetail()
+        {
+            DataContext = _viewModelLocator.PersonDetailViewModel;
+        }
+        public void LoadPersonList()
+        {
+            DataContext = _viewModelLocator.PersonListViewModel;
+        }
+
+        public void LoadPublisherDetail()
+        {
+            DataContext = _viewModelLocator.PublisherDetailViewModel;
+        }
+        public void LoadPublisherList()
+        {
+            DataContext = _viewModelLocator.PublisherListViewModel;
+        }
+
+        public void LoadTagDetail()
+        {
+            DataContext = _viewModelLocator.TagDetailViewModel;
+        }
+        public void LoadTagList()
+        {
+            DataContext = _viewModelLocator.TagListViewModel;
+        }
+
+        public void LoadUserDetail()
+        {
+            DataContext = _viewModelLocator.UserDetailViewModel;
+        }
+        public void LoadUserList()
+        {
+            DataContext = _viewModelLocator.UserListViewModel;
         }
 
         #endregion

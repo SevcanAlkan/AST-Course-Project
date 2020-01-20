@@ -18,20 +18,20 @@ using System.Windows.Shapes;
 namespace MovieStore.Desktop.Views
 {
     /// <summary>
-    /// Interaction logic for GenreDetail.xaml
+    /// Interaction logic for UserDetail.xaml
     /// </summary>
-    public partial class GenreDetail : UserControl
+    public partial class UserDetail : UserControl
     {
-        public GenreDetail()
+        public UserDetail()
         {
             InitializeComponent();
         }
 
-        private GenreDetailViewModel _vm
+        private UserDetailViewModel _vm
         {
             get
             {
-                return (GenreDetailViewModel)this.DataContext;
+                return (UserDetailViewModel)this.DataContext;
             }
         }
 
@@ -49,15 +49,18 @@ namespace MovieStore.Desktop.Views
 
             if (_vm.Rec != null)
             {
-                this.txtName.Text = _vm.Rec.Name;
-                this.txtDescription.Text = _vm.Rec.Description;
+                this.txtUsername.Text = _vm.Rec.UserName;
+                this.txtDisplayName.Text = _vm.Rec.DisplayName;
+                this.txtPassword.Text = _vm.Rec.Password;
+                this.txtConfirmPassword.Text = _vm.Rec.Password;
             }
         }
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            _vm.Rec.Name = txtName.Text;
-            _vm.Rec.Description = txtDescription.Text;
+            _vm.Rec.UserName = txtUsername.Text;
+            _vm.Rec.DisplayName = txtDisplayName.Text;
+            _vm.Rec.Password = txtPassword.Text;
 
             if (_vm.Id == null || _vm.Id.IsNotValid())
             {
@@ -88,7 +91,7 @@ namespace MovieStore.Desktop.Views
             if (_window != null)
             {
                 _window.DataContext = null;
-                _window.LoadGenreList();
+                _window.LoadUserList();
             }
         }
     }

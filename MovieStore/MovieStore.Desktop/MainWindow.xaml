@@ -16,11 +16,41 @@
         <DataTemplate x:Name="homeViewTemplate" DataType="{x:Type viewmodels:HomeViewModel}">
             <views:HomeView DataContext="{Binding HomeViewModel, Source={StaticResource ViewModelLocator}}" />
         </DataTemplate>
-        <DataTemplate x:Name="genreViewTemplate" DataType="{x:Type viewmodels:GenreViewModel}">
-            <views:GenreList DataContext="{Binding GenreViewModel, Source={StaticResource ViewModelLocator}}" />
+        <DataTemplate x:Name="genrelistViewTemplate" DataType="{x:Type viewmodels:GenreListViewModel}">
+            <views:GenreList DataContext="{Binding GenreListViewModel, Source={StaticResource ViewModelLocator}}" />
         </DataTemplate>
         <DataTemplate x:Name="genreDetailViewTemplate" DataType="{x:Type viewmodels:GenreDetailViewModel}">
             <views:GenreDetail DataContext="{Binding GenreDetailViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="languageListViewTemplate" DataType="{x:Type viewmodels:LanguageListViewModel}">
+            <views:LanguageList DataContext="{Binding LanguageListViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="languageDetailViewTemplate" DataType="{x:Type viewmodels:LanguageDetailViewModel}">
+            <views:LanguageDetail DataContext="{Binding LanguageDetailViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="personViewTemplate" DataType="{x:Type viewmodels:PersonListViewModel}">
+            <views:PersonList DataContext="{Binding PersonListViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="personDetailViewTemplate" DataType="{x:Type viewmodels:PersonDetailViewModel}">
+            <views:PersonDetail DataContext="{Binding PersonDetailViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="publisherViewTemplate" DataType="{x:Type viewmodels:PublisherListViewModel}">
+            <views:PublisherList DataContext="{Binding PublisherListViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="publisherDetailViewTemplate" DataType="{x:Type viewmodels:PublisherDetailViewModel}">
+            <views:PublisherDetail DataContext="{Binding PublisherDetailViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="tagViewTemplate" DataType="{x:Type viewmodels:TagListViewModel}">
+            <views:TagList DataContext="{Binding TagListViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="tagDetailViewTemplate" DataType="{x:Type viewmodels:TagDetailViewModel}">
+            <views:TagDetail DataContext="{Binding TagDetailViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="userViewTemplate" DataType="{x:Type viewmodels:UserListViewModel}">
+            <views:UserList DataContext="{Binding UserListViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="userDetailViewTemplate" DataType="{x:Type viewmodels:UserDetailViewModel}">
+            <views:UserDetail DataContext="{Binding UserDetailViewModel, Source={StaticResource ViewModelLocator}}" />
         </DataTemplate>
 
         <Storyboard x:Key="MenuOpen">

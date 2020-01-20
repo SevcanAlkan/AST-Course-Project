@@ -18,20 +18,20 @@ using System.Windows.Shapes;
 namespace MovieStore.Desktop.Views
 {
     /// <summary>
-    /// Interaction logic for GenreDetail.xaml
+    /// Interaction logic for PersonDetail.xaml
     /// </summary>
-    public partial class GenreDetail : UserControl
+    public partial class PersonDetail : UserControl
     {
-        public GenreDetail()
+        public PersonDetail()
         {
             InitializeComponent();
         }
 
-        private GenreDetailViewModel _vm
+        private PersonDetailViewModel _vm
         {
             get
             {
-                return (GenreDetailViewModel)this.DataContext;
+                return (PersonDetailViewModel)this.DataContext;
             }
         }
 
@@ -50,14 +50,17 @@ namespace MovieStore.Desktop.Views
             if (_vm.Rec != null)
             {
                 this.txtName.Text = _vm.Rec.Name;
-                this.txtDescription.Text = _vm.Rec.Description;
+                this.txtAge.Text = _vm.Rec.Age.ToString();
+                this.txtBio.Text = _vm.Rec.Bio;
             }
         }
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
             _vm.Rec.Name = txtName.Text;
-            _vm.Rec.Description = txtDescription.Text;
+            short.TryParse(txtAge.Text, out short age);
+            _vm.Rec.Age = age;
+            _vm.Rec.Bio = txtBio.Text;
 
             if (_vm.Id == null || _vm.Id.IsNotValid())
             {
@@ -88,7 +91,7 @@ namespace MovieStore.Desktop.Views
             if (_window != null)
             {
                 _window.DataContext = null;
-                _window.LoadGenreList();
+                _window.LoadPersonList();
             }
         }
     }

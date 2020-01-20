@@ -18,20 +18,20 @@ using System.Windows.Shapes;
 namespace MovieStore.Desktop.Views
 {
     /// <summary>
-    /// Interaction logic for GenreList.xaml
+    /// Interaction logic for UserList.xaml
     /// </summary>
-    public partial class GenreList : UserControl
+    public partial class UserList : UserControl
     {
-        public GenreList()
+        public UserList()
         {
             InitializeComponent();
         }
 
-        private GenreListViewModel _vm
+        private UserListViewModel _vm
         {
             get
             {
-                return (GenreListViewModel)this.DataContext;
+                return (UserListViewModel)this.DataContext;
             }
         }
 
@@ -64,21 +64,17 @@ namespace MovieStore.Desktop.Views
                 {
                     column.Visibility = Visibility.Hidden;
                 }
-                else if (column.Header.ToString() == "Name")
+                else if (column.Header.ToString() == "UserName")
                 {
                     column.MinWidth = 200;
                     column.DisplayIndex = 2;
                     column.Width = new DataGridLength(200, DataGridLengthUnitType.Pixel);
                 }
-                else if (column.Header.ToString() == "Description")
+                else if (column.Header.ToString() == "DisplayName")
                 {
-                    column.MinWidth = 500;
+                    column.MinWidth = 200;
                     column.DisplayIndex = 3;
-                    column.Width = new DataGridLength(740, DataGridLengthUnitType.Pixel);
-                }
-                else if (column.Header.ToString() == "Movies")
-                {
-                    column.Visibility = Visibility.Hidden;
+                    column.Width = new DataGridLength(200, DataGridLengthUnitType.Pixel);
                 }
                 else if (column.Header.ToString() == "IsDeleted")
                 {
@@ -95,32 +91,32 @@ namespace MovieStore.Desktop.Views
 
             if (_window != null)
             {
-                if (rec != null && rec is Genre)
+                if (rec != null && rec is User)
                 {
-                    _window.Id = (rec as Genre).Id;
+                    _window.Id = (rec as User).Id;
                 }
 
                 _window.DataContext = null;
-                _window.LoadGenreDetail();
+                _window.LoadUserDetail();
             }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             if (_window != null)
             {
                 _window.Id = Guid.Empty;
                 _window.DataContext = null;
-                _window.LoadGenreDetail();
+                _window.LoadUserDetail();
             }
         }
 
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             var rec = this.grdList.SelectedItem;
-            if(rec != null && rec is Genre)
+            if (rec != null && rec is User)
             {
-                await _vm.Delete((rec as Genre).Id);
+                await _vm.Delete((rec as User).Id);
                 this.Load();
                 this.ConfigureGrid();
             }

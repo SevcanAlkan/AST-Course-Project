@@ -18,20 +18,20 @@ using System.Windows.Shapes;
 namespace MovieStore.Desktop.Views
 {
     /// <summary>
-    /// Interaction logic for GenreList.xaml
+    /// Interaction logic for TagList.xaml
     /// </summary>
-    public partial class GenreList : UserControl
+    public partial class TagList : UserControl
     {
-        public GenreList()
+        public TagList()
         {
             InitializeComponent();
         }
 
-        private GenreListViewModel _vm
+        private TagListViewModel _vm
         {
             get
             {
-                return (GenreListViewModel)this.DataContext;
+                return (TagListViewModel)this.DataContext;
             }
         }
 
@@ -60,7 +60,7 @@ namespace MovieStore.Desktop.Views
         {
             foreach (var column in this.grdList.Columns)
             {
-                if (column.Header.ToString() == "Id")
+                if (column.Header.ToString() == "Id" || column.Header.ToString() == "Movies")
                 {
                     column.Visibility = Visibility.Hidden;
                 }
@@ -70,20 +70,10 @@ namespace MovieStore.Desktop.Views
                     column.DisplayIndex = 2;
                     column.Width = new DataGridLength(200, DataGridLengthUnitType.Pixel);
                 }
-                else if (column.Header.ToString() == "Description")
-                {
-                    column.MinWidth = 500;
-                    column.DisplayIndex = 3;
-                    column.Width = new DataGridLength(740, DataGridLengthUnitType.Pixel);
-                }
-                else if (column.Header.ToString() == "Movies")
-                {
-                    column.Visibility = Visibility.Hidden;
-                }
                 else if (column.Header.ToString() == "IsDeleted")
                 {
                     column.MinWidth = 60;
-                    column.DisplayIndex = 4;
+                    column.DisplayIndex = 3;
                     column.Width = new DataGridLength(60, DataGridLengthUnitType.Pixel);
                 }
             }
@@ -95,32 +85,32 @@ namespace MovieStore.Desktop.Views
 
             if (_window != null)
             {
-                if (rec != null && rec is Genre)
+                if (rec != null && rec is Tag)
                 {
-                    _window.Id = (rec as Genre).Id;
+                    _window.Id = (rec as Tag).Id;
                 }
 
                 _window.DataContext = null;
-                _window.LoadGenreDetail();
+                _window.LoadTagDetail();
             }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             if (_window != null)
             {
                 _window.Id = Guid.Empty;
                 _window.DataContext = null;
-                _window.LoadGenreDetail();
+                _window.LoadTagDetail();
             }
         }
 
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             var rec = this.grdList.SelectedItem;
-            if(rec != null && rec is Genre)
+            if (rec != null && rec is Tag)
             {
-                await _vm.Delete((rec as Genre).Id);
+                await _vm.Delete((rec as Tag).Id);
                 this.Load();
                 this.ConfigureGrid();
             }
