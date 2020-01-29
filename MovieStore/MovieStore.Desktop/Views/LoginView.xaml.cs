@@ -65,7 +65,6 @@ namespace MovieStore.Desktop.Views
             if (window != null)
             {
                 window.Login(result);
-                window.DataContext = null;
             }
         }
 

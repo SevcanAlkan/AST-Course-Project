@@ -84,14 +84,14 @@
         <VM:MainWindowViewModel />
     </Window.DataContext>-->
 
-    <Grid Background="LightGray">
+    <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid Height="60" VerticalAlignment="Top" Grid.Row="0" Background="#FF3885C5" x:Name="grdTopBar" Loaded="grdTopBar_Loaded">
-            <TextBlock Text="Movie Dubbing Studio Manager" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            <TextBlock x:Name="tbWindowTitle" Text="Movie Dubbing Studio Manager" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock x:Name="txtUserName" Text="" VerticalAlignment="Center" FontSize="18"/>
                 <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
@@ -200,7 +200,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ContentControl x:Name="windowContent" Content="{Binding}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="5" />
+            <ContentControl x:Name="windowContent" Content="{Binding}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="5" Background="White" />
 
         </Grid>
     </Grid>

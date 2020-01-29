@@ -49,6 +49,7 @@
     <Compile Include="Enum\ProjectStatus.cs" />
     <Compile Include="ModelCopier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\FormValidation.cs" />
     <Compile Include="Validation\GuidValidation.cs" />
     <Compile Include="Validation\Validation.cs" />
   </ItemGroup>
