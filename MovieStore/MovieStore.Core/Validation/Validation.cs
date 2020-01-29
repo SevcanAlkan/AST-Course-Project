@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MovieStore.Core.Validation
 {
-    public static class Validation
+    public static partial class Validation
     {
-        public static bool IsNull(object value)
+        public static bool IsNull(this object value)
         {
             return value == null;
         }
@@ -22,17 +22,17 @@ namespace MovieStore.Core.Validation
             return value == null || value == Guid.Empty;
         }
 
-        public static bool IsNullOrEmpty(string value)
+        public static bool IsNullOrEmpty(this string value)
         {
             return String.IsNullOrEmpty(value) || String.IsNullOrWhiteSpace(value);
         }
 
-        public static bool IsNullOrEmpty(int? value)
+        public static bool IsNullOrEmpty(this int? value)
         {
             return value == null || value == 0;
         }
 
-        public static bool IsNullOrEmpty(DateTime? value)
+        public static bool IsNullOrEmpty(this DateTime? value)
         {
             return value == null || DateTime.MinValue == value;
         }
