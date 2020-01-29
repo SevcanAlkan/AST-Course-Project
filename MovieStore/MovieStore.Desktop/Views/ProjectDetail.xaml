@@ -16,32 +16,102 @@
             <RowDefinition Height="40px" />
         </Grid.RowDefinitions>
 
-        <Label Content="User Detail" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Left" FontSize="25" />
+        <Label Content="Project Detail" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Left" FontSize="25" />
 
-        <Grid Grid.Column="1" Grid.Row="1" Loaded="Grid_Loaded">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20px" />
-                <ColumnDefinition Width="200px"/>
-                <ColumnDefinition />
-                <ColumnDefinition Width="20px"/>
-            </Grid.ColumnDefinitions>
+        <TabControl Grid.Column="1" Grid.Row="1">
+            <TabItem Header="Main" Width="100px">
 
-            <StackPanel Grid.Column="1">
-                <Label Content="Username:" Height="25"></Label>
-                <Label Content="Display Name:" Height="25" Margin="0,10,0,0"></Label>
-                <Label Content="Password:" Height="25" Margin="0,10,0,0"></Label>
-                <Label Content="Confirm Password:" Height="25" Margin="0,10,0,0"></Label>
-            </StackPanel>
+                <Grid Grid.Column="1" Grid.Row="1" Loaded="Grid_Loaded" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20px" />
+                        <ColumnDefinition Width="200px"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="20px"/>
+                    </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="2">
-                <TextBox x:Name="txtUsername" Text="" Height="25"></TextBox>
-                <TextBox x:Name="txtDisplayName" Text="" Height="25"  Margin="0,10,0,0"></TextBox>
-                <TextBox x:Name="txtPassword" Text="" Height="25"  Margin="0,10,0,0"></TextBox>
-                <TextBox x:Name="txtConfirmPassword" Text="" Height="25"  Margin="0,10,0,0"></TextBox>
-            </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <Label Content="Code:" Height="25"></Label>
+                        <Label Content="Subject:" Height="25" Margin="0,10,0,0"></Label>
+                        <Label Content="Due Date:" Height="25" Margin="0,10,0,0"></Label>
+                        <Label Content="Status:" Height="25" Margin="0,10,0,0"></Label>
+                        <Label Content="Movie:" Height="25" Margin="0,10,0,0"></Label>
+                        <Label Content="Translate Language:" Height="25" Margin="0,10,0,0"></Label>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBox x:Name="txtCode" Text="" Height="25"></TextBox>
+                        <TextBox x:Name="txtSubject" Text="" Height="25"  Margin="0,10,0,0"></TextBox>
+                        <DatePicker x:Name="dpDueDate" Text="" Height="25"  Margin="0,10,0,0"></DatePicker>
+                        <ComboBox x:Name="cbStatus" Text="" Height="25"  Margin="0,10,0,0"></ComboBox>
+                        <ComboBox x:Name="cbMovie" Text="" Height="25"  Margin="0,10,0,0"></ComboBox>
+
+                        <Grid Height="150px"  Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100px"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25px"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="tbTranslateLanguage" Text="Selected Language" Grid.Column="0" Grid.Row="0" Grid.RowSpan="1"></TextBlock>
+                            <Button x:Name="btnSelectLanguage" Content="Select Language" Grid.Column="1" Grid.Row="0" Grid.RowSpan="1"></Button>
+
+                            <ListView x:Name="lstLanguage" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0" Visibility="Hidden" />
+                        </Grid>
+                    </StackPanel>
 
 
-        </Grid>
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Notes" Width="100px">
+
+                <Grid Grid.Column="1" Grid.Row="1" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20px" />
+                        <ColumnDefinition Width="200px"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="20px"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="1">
+                        <Label Content="Notes:" Height="25"></Label>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBox x:Name="txtNotes" Text="" Height="325"></TextBox>
+                    </StackPanel>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Cast" Width="100px">
+
+                <Grid Grid.Column="1" Grid.Row="1" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20px" />
+                        <ColumnDefinition Width="200px"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="20px"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="1">
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                    </StackPanel>
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+        
+      
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
             <Button x:Name="btnCancel" Content="Cancel" Margin="0,0,20,0" Width="100" Height="30" Click="btnCancel_Click"/>

@@ -299,11 +299,11 @@ namespace MovieStore.Desktop
 
         public void LoadProjectDetail()
         {
-            DataContext = _viewModelLocator.UserDetailViewModel;
+            DataContext = _viewModelLocator.ProjectDetailViewModel;
         }
         public void LoadProjectList()
         {
-            DataContext = _viewModelLocator.UserListViewModel;
+            DataContext = _viewModelLocator.ProjectListViewModel;
         }
 
         #endregion
