@@ -85,9 +85,9 @@
     </ApplicationDefinition>
     <Compile Include="DI\IocConfiguration.cs" />
     <Compile Include="DI\IocKernel.cs" />
-    <Compile Include="GenreListViewModel.cs" />
     <Compile Include="Helper\UserControlCreator.cs" />
     <Compile Include="Helper\UserInfo.cs" />
+    <Compile Include="ViewModel\ProjectDetailViewModel.cs" />
     <Compile Include="ViewModel\UserDetailViewModel.cs" />
     <Compile Include="ViewModel\PublisherDetailViewModel.cs" />
     <Compile Include="ViewModel\PersonDetailViewModel.cs" />
@@ -95,6 +95,7 @@
     <Compile Include="ViewModel\LanguageDetailViewModel.cs" />
     <Compile Include="ViewModel\GenreDetailViewModel.cs" />
     <Compile Include="ViewModel\PublisherListViewModel.cs" />
+    <Compile Include="ViewModel\ProjectListViewModel.cs" />
     <Compile Include="ViewModel\UserListViewModel.cs" />
     <Compile Include="ViewModel\TagListViewModel.cs" />
     <Compile Include="ViewModel\LanguageListViewModel.cs" />
@@ -133,6 +134,12 @@
     </Compile>
     <Compile Include="Views\PersonList.xaml.cs">
       <DependentUpon>PersonList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProjectDetail.xaml.cs">
+      <DependentUpon>ProjectDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProjectList.xaml.cs">
+      <DependentUpon>ProjectList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PublisherDetail.xaml.cs">
       <DependentUpon>PublisherDetail.xaml</DependentUpon>
@@ -201,6 +208,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PersonList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProjectDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProjectList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -52,6 +52,12 @@
         <DataTemplate x:Name="userDetailViewTemplate" DataType="{x:Type viewmodels:UserDetailViewModel}">
             <views:UserDetail DataContext="{Binding UserDetailViewModel, Source={StaticResource ViewModelLocator}}" />
         </DataTemplate>
+        <DataTemplate x:Name="projectViewTemplate" DataType="{x:Type viewmodels:ProjectListViewModel}">
+            <views:ProjectList DataContext="{Binding ProjectListViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="projectDetailViewTemplate" DataType="{x:Type viewmodels:ProjectDetailViewModel}">
+            <views:ProjectDetail DataContext="{Binding ProjectDetailViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
 
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">

@@ -192,7 +192,7 @@ namespace MovieStore.Desktop
 
         private void liProject_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DataContext = null;
+            DataContext = _viewModelLocator.ProjectListViewModel;
             this.SetTitle("Project");
         }
 
@@ -293,6 +293,15 @@ namespace MovieStore.Desktop
             DataContext = _viewModelLocator.UserDetailViewModel;
         }
         public void LoadUserList()
+        {
+            DataContext = _viewModelLocator.UserListViewModel;
+        }
+
+        public void LoadProjectDetail()
+        {
+            DataContext = _viewModelLocator.UserDetailViewModel;
+        }
+        public void LoadProjectList()
         {
             DataContext = _viewModelLocator.UserListViewModel;
         }

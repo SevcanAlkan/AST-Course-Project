@@ -52,6 +52,7 @@
     <Compile Include="Validation\FormValidation.cs" />
     <Compile Include="Validation\GuidValidation.cs" />
     <Compile Include="Validation\Validation.cs" />
+    <Compile Include="ViewModel\BaseVM.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -84,6 +84,7 @@
     <Compile Include="Service\TagService.cs" />
     <Compile Include="SubStructure\BaseService.cs" />
     <Compile Include="SubStructure\Repository.cs" />
+    <Compile Include="ViewModel\ProjectVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MovieStore.Core\MovieStore.Core.csproj">
