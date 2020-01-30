@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MovieStore.Desktop.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="5,5,5,5">
+    <Grid Margin="5,5,5,5"  Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -21,7 +21,7 @@
         <TabControl Grid.Column="1" Grid.Row="1">
             <TabItem Header="Main" Width="100px">
 
-                <Grid Grid.Column="1" Grid.Row="1" Loaded="Grid_Loaded" Margin="0,10,0,0">
+                <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20px" />
                         <ColumnDefinition Width="200px"/>
@@ -56,13 +56,12 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
 
-                            <TextBlock x:Name="tbTranslateLanguage" Text="Selected Language" Grid.Column="0" Grid.Row="0" Grid.RowSpan="1"></TextBlock>
-                            <Button x:Name="btnSelectLanguage" Content="Select Language" Grid.Column="1" Grid.Row="0" Grid.RowSpan="1"></Button>
+                            <TextBox x:Name="txtTranslateLanguage" Text="Selected Language" Grid.Column="0" Grid.Row="0" Grid.RowSpan="1" IsEnabled="False" KeyDown="txtTranslateLanguage_KeyDown" KeyUp="txtTranslateLanguage_KeyUp"></TextBox>
+                            <Button x:Name="btnSelectLanguage" Content="Select Language" Grid.Column="1" Grid.Row="0" Grid.RowSpan="1" Click="btnSelectLanguage_Click"></Button>
 
-                            <ListView x:Name="lstLanguage" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0" Visibility="Hidden" />
+                            <ListView x:Name="lstLanguage" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0" Visibility="Hidden" PreviewMouseLeftButtonUp="lstLanguage_Selected" />
                         </Grid>
                     </StackPanel>
-
 
                 </Grid>
 
@@ -70,7 +69,7 @@
 
             <TabItem Header="Notes" Width="100px">
 
-                <Grid Grid.Column="1" Grid.Row="1" Margin="0,10,0,0">
+                <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20px" />
                         <ColumnDefinition Width="200px"/>
@@ -83,7 +82,7 @@
                     </StackPanel>
 
                     <StackPanel Grid.Column="2">
-                        <TextBox x:Name="txtNotes" Text="" Height="325"></TextBox>
+                        <TextBox x:Name="txtNotes" Text="" Height="325" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True"></TextBox>
                     </StackPanel>
 
                 </Grid>
@@ -92,7 +91,72 @@
 
             <TabItem Header="Cast" Width="100px">
 
-                <Grid Grid.Column="1" Grid.Row="1" Margin="0,10,0,0">
+                <Grid Margin="5,5,5,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Button Section -->
+                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Content="Add" Name="btnCastAdd" Grid.Column="0" Click="btnCastAdd_Click"/>
+                        <Button Content="Edit" Name="btnCastEdit" Grid.Column="1" Click="btnCastEdit_Click"/>
+                        <Button Content="Delete" Name="btnCastDelete" Grid.Column="2" Click="btnCastDelete_Click"/>
+                    </Grid>
+
+                    <Button Content="Load Transcript" Name="btnLoadTranscript" Grid.Column="3" Click="btnLoadTranscript_Click"/>
+
+                    <DataGrid x:Name="grdCastList" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,5,0,0"
+                      IsReadOnly="True" 
+                      CanUserReorderColumns="False">
+                    </DataGrid>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Transcript" Width="100px" Visibility="Collapsed">
+
+                <Grid Margin="5,5,5,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20px" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="20px"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="40px" />
+                    </Grid.RowDefinitions>
+                    
+
+                    <StackPanel Grid.Column="1">
+                        <TextBox x:Name="txtLocalTranscript" Text="" Height="280" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Margin="0,0,5,0"></TextBox>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBox x:Name="txtEnglishTranscript" Text="" Height="280" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Margin="5,0,0,0"></TextBox>
+                    </StackPanel>
+                </Grid>
+
+            </TabItem>
+
+            <TabItem x:Name="castDetailTab" Header="New Cast" Width="100px" FontWeight="Bold" Foreground="Red" Visibility="Collapsed">
+
+                <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20px" />
                         <ColumnDefinition Width="200px"/>
@@ -101,17 +165,25 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="1">
+                        <Label Content="Person:" Height="25" Margin="0,10,0,0"></Label>
+                        <Label Content="Status:" Height="25" Margin="0,10,0,0"></Label>
+                        <Label Content="English Text:" Height="100" Margin="0,10,0,0"></Label>
+                        <Label Content="Original Text:" Height="100" Margin="0,10,0,0"></Label>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2">
+                        <ComboBox x:Name="cbCastPerson" Text="" Height="25"  Margin="0,10,0,0"></ComboBox>
+                        <ComboBox x:Name="cbCastStatus" Text="" Height="25"  Margin="0,10,0,0"></ComboBox>
+                        <TextBox x:Name="txtCastEnglishText" Text="" Height="100" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Margin="0,10,0,0"></TextBox>
+                        <TextBox x:Name="txtCastLocalText" Text="" Height="100" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Margin="0,10,0,0"></TextBox>
                     </StackPanel>
 
                 </Grid>
 
             </TabItem>
         </TabControl>
-        
-      
+
+
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
             <Button x:Name="btnCancel" Content="Cancel" Margin="0,0,20,0" Width="100" Height="30" Click="btnCancel_Click"/>

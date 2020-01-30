@@ -13,6 +13,7 @@ namespace MovieStore.Data.SubStructure
     public interface IBaseService<D>
         where D : BaseEntity, IBaseEntity, new()
     {
+        IQueryable<D> AsQueryable();
         IList<D> GetAll(Expression<Func<D, bool>> expr);
 
         Task<D> GetByIdAsync(Guid id);
@@ -34,6 +35,18 @@ namespace MovieStore.Data.SubStructure
         public BaseService(IRepository<D> repository)
         {
             Repository = repository;
+        }
+
+        public virtual IQueryable<D> AsQueryable()
+        {
+            try
+            {
+                return Repository.Get();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public virtual async Task<D> GetByIdAsync(Guid id)

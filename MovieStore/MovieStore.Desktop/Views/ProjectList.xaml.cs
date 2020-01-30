@@ -1,4 +1,5 @@
-﻿using MovieStore.Desktop.ViewModel;
+﻿using MovieStore.Data.ViewModel;
+using MovieStore.Desktop.ViewModel;
 using MovieStore.Domain;
 using System;
 using System.Collections.Generic;
@@ -121,9 +122,9 @@ namespace MovieStore.Desktop.Views
 
             if (_window != null)
             {
-                if (rec != null && rec is Project)
+                if (rec != null && rec is ProjectVM)
                 {
-                    _window.Id = (rec as Project).Id;
+                    _window.Id = (rec as ProjectVM).Id;
                 }
 
                 _window.DataContext = null;

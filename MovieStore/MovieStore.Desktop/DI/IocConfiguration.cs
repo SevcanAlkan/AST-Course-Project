@@ -35,6 +35,10 @@ namespace MovieStore.Desktop.DI
              x => x.Request.ParentContext.Plan.Type);
             Bind<IProjectService>().To<ProjectService>().InTransientScope().WithConstructorArgument(typeof(Type),
             x => x.Request.ParentContext.Plan.Type);
+            Bind<IMovieService>().To<MovieService>().InTransientScope().WithConstructorArgument(typeof(Type),
+            x => x.Request.ParentContext.Plan.Type);
+            Bind<IProjectCastService>().To<ProjectCastService>().InTransientScope().WithConstructorArgument(typeof(Type),
+            x => x.Request.ParentContext.Plan.Type);
 
             Bind<LoginViewModel>().ToSelf().InTransientScope();
             Bind<HomeViewModel>().ToSelf().InTransientScope();

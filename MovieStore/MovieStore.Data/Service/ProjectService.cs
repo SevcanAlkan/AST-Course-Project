@@ -8,19 +8,22 @@ using MovieStore.Data.SubStructure;
 using MovieStore.Data.ViewModel;
 using MovieStore.Domain;
 using MovieStore.Core.Validation;
+using MovieStore.Data.Helper;
 
 namespace MovieStore.Data.Service
 {
     public class ProjectService : BaseService<Project>, IProjectService
     {
         private IRepository<Language> _languageRepository;
+        private IRepository<Movie> _movieRepository;
 
         #region Ctor
 
-        public ProjectService(IRepository<Project> repository, IRepository<Language> languageRepository)
+        public ProjectService(IRepository<Project> repository, IRepository<Language> languageRepository, IRepository<Movie> movieRepository)
             : base(repository)
         {
             _languageRepository = languageRepository;
+            _movieRepository = movieRepository;
         }
 
         #endregion
@@ -66,10 +69,10 @@ namespace MovieStore.Data.Service
                 Code = a.Code,
                 Subject = a.Subject,
                 DueDate = a.DueDate != null && a.DueDate != DateTime.MinValue ? a.DueDate.Value.ToString("yyyy-MM-dd hh:mm") : " - ",
-                MovieName = a.Movie.Name,
+                MovieName = _movieRepository.Query().Where(m => m.Id == a.MovieId).Select(s=> s.Name).FirstOrDefault(),
                 MovieId = a.MovieId,
                 Status = a.Status,
-                StatusStr = a.Status.ToString(),
+                StatusStr = EnumHelper.GetDescription<ProjectStatus>(a.Status),
                 TranslateLanguageCode = _languageRepository.Get().Where(l => l.Id == a.TranslateLanguageId).Select(s => s.Code).FirstOrDefault(),
                 TranslateLanguageId = a.TranslateLanguageId
             }).ToList();

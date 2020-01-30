@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MovieStore.Data.SubStructure;
+using MovieStore.Data.ViewModel;
 using MovieStore.Domain;
 
 namespace MovieStore.Data.Service
@@ -22,11 +23,22 @@ namespace MovieStore.Data.Service
 
         #region Methods                
 
+        public List<SelectListGuidVM> GetSelectList()
+        {
+            return this.AsQueryable()
+                .Where(a=> a.IsDeleted == false)
+                .Select(s => new SelectListGuidVM()
+                {
+                    Value = s.Id,
+                    Text = s.Name
+                }).ToList();
+        }
 
         #endregion
     }
 
     public interface IMovieService : IBaseService<Movie>
     {
+        List<SelectListGuidVM> GetSelectList();
     }
 }
