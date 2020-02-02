@@ -6,7 +6,6 @@ using MovieStore.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieStore.Desktop.ViewModel
@@ -135,11 +134,11 @@ namespace MovieStore.Desktop.ViewModel
 
         public List<Language> GetLanguageList(string searchKey = "")
         {
-            if(searchKey == "")
+            if (searchKey == "")
                 return _languageService.GetAll(a => a.IsDeleted == false).ToList();
             else
-                return _languageService.GetAll(a => a.IsDeleted == false && (a.Code.Contains(searchKey) 
-                || a.Name.Contains(searchKey) 
+                return _languageService.GetAll(a => a.IsDeleted == false && (a.Code.Contains(searchKey)
+                || a.Name.Contains(searchKey)
                 || a.NativeName.Contains(searchKey))).ToList();
         }
 

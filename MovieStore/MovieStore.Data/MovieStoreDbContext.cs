@@ -1,17 +1,14 @@
 ﻿using MovieStore.Domain;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieStore.Data
-{    
+{
     public class MovieStoreDbContext : DbContext
     {
         public MovieStoreDbContext() : base("name=DefaultConnection")
@@ -65,7 +62,7 @@ namespace MovieStore.Data
             try
             {
                 return base.SaveChanges();
-            }  
+            }
             catch (DbEntityValidationException e)
             {
                 foreach (var eve in e.EntityValidationErrors)
@@ -77,13 +74,13 @@ namespace MovieStore.Data
                         Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
                             ve.PropertyName, ve.ErrorMessage);
                     }
-}
+                }
                 throw;
             }
             catch (Exception dbEx)
             {
                 throw dbEx;
-            }            
+            }
         }
 
         public DbSet<Project> Projects { get; set; }

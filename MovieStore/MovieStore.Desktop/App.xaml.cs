@@ -1,15 +1,4 @@
-﻿using MovieStore.Data;
-using MovieStore.Data.SubStructure;
-using MovieStore.Desktop.DI;
-using MovieStore.Desktop.ViewModel;
-using MovieStore.Domain;
-using Ninject;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using MovieStore.Desktop.DI;
 using System.Windows;
 
 namespace MovieStore.Desktop

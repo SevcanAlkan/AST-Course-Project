@@ -2,21 +2,9 @@
 using MovieStore.Data.Helper;
 using MovieStore.Data.ViewModel;
 using MovieStore.Desktop.ViewModel;
-using MovieStore.Domain;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MovieStore.Desktop.Views
 {
@@ -79,9 +67,9 @@ namespace MovieStore.Desktop.Views
         {
             foreach (var column in this.grdList.Columns)
             {
-                if (column.Header.ToString() == "Id" 
-                    || column.Header.ToString() == "Status" 
-                    || column.Header.ToString() == "TranslateLanguageId" 
+                if (column.Header.ToString() == "Id"
+                    || column.Header.ToString() == "Status"
+                    || column.Header.ToString() == "TranslateLanguageId"
                     || column.Header.ToString() == "MovieId")
                 {
                     column.Visibility = Visibility.Hidden;
@@ -173,7 +161,7 @@ namespace MovieStore.Desktop.Views
 
         private void cbStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           var status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM).Value);
+            var status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM).Value);
 
             this.FilterGrid(status);
         }

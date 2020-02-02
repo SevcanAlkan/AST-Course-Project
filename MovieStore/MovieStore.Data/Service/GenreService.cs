@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MovieStore.Data.SubStructure;
+﻿using MovieStore.Data.SubStructure;
 using MovieStore.Domain;
+using System.Collections.Generic;
 
 namespace MovieStore.Data.Service
 {
@@ -26,7 +22,7 @@ namespace MovieStore.Data.Service
         {
             var list = base.GetAll();
 
-            if(list != null)
+            if (list != null)
             {
                 foreach (var item in list)
                 {
