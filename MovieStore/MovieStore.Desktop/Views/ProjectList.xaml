@@ -38,5 +38,21 @@
                   CanUserReorderColumns="False">
         </DataGrid>
 
+        <Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Label Content="Status:" />
+                <ComboBox x:Name="cbStatus" Text="" Height="31"  Margin="0,10,0,0" Width="100" VerticalAlignment="Center" SelectionChanged="cbStatus_SelectionChanged">
+                    </ComboBox>
+            </StackPanel>
+            
+
+        </Grid>
+
     </Grid>
 </UserControl>

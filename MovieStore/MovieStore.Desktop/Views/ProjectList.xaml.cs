@@ -1,4 +1,6 @@
-﻿using MovieStore.Data.ViewModel;
+﻿using MovieStore.Core.Enum;
+using MovieStore.Data.Helper;
+using MovieStore.Data.ViewModel;
 using MovieStore.Desktop.ViewModel;
 using MovieStore.Domain;
 using System;
@@ -44,9 +46,9 @@ namespace MovieStore.Desktop.Views
             }
         }
 
-        private void Load()
+        private void Load(ProjectStatus? status = null)
         {
-            var data = _vm.Get();
+            var data = _vm.Get(status: status);
             if (data != null)
                 this.grdList.ItemsSource = data;
         }
@@ -54,6 +56,22 @@ namespace MovieStore.Desktop.Views
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             this.Load();
+            this.ConfigureGrid();
+            this.LoadFilters();
+        }
+
+        private void LoadFilters()
+        {
+            #region Status ComboBox 
+            this.cbStatus.ItemsSource = EnumHelper.GetSelectList<ProjectStatus>();
+            this.cbStatus.DisplayMemberPath = "Text";
+            this.cbStatus.SelectedValuePath = "Value";
+            #endregion
+        }
+
+        private void FilterGrid(ProjectStatus? status = null)
+        {
+            this.Load(status);
             this.ConfigureGrid();
         }
 
@@ -110,7 +128,7 @@ namespace MovieStore.Desktop.Views
                 else if (column.Header.ToString() == "IsDeleted")
                 {
                     column.MinWidth = 60;
-                    column.DisplayIndex = 8;
+                    column.DisplayIndex = 9;
                     column.Width = new DataGridLength(60, DataGridLengthUnitType.Pixel);
                 }
             }
@@ -145,12 +163,19 @@ namespace MovieStore.Desktop.Views
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             var rec = this.grdList.SelectedItem;
-            if (rec != null && rec is Project)
+            if (rec != null && rec is ProjectVM)
             {
-                await _vm.Delete((rec as Project).Id);
+                await _vm.Delete((rec as ProjectVM).Id);
                 this.Load();
                 this.ConfigureGrid();
             }
+        }
+
+        private void cbStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           var status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM).Value);
+
+            this.FilterGrid(status);
         }
     }
 }

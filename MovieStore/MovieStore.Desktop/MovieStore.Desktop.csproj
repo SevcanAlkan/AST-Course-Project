@@ -138,6 +138,7 @@
     <Compile Include="Views\ProjectDetail.xaml.cs">
       <DependentUpon>ProjectDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProjectDetailCast.cs" />
     <Compile Include="Views\ProjectList.xaml.cs">
       <DependentUpon>ProjectList.xaml</DependentUpon>
     </Compile>

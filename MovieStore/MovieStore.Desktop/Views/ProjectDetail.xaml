@@ -18,7 +18,7 @@
 
         <Label Content="Project Detail" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Left" FontSize="25" />
 
-        <TabControl Grid.Column="1" Grid.Row="1">
+        <TabControl x:Name="tcMain" Grid.Column="1" Grid.Row="1">
             <TabItem Header="Main" Width="100px">
 
                 <Grid Margin="0,10,0,0">
@@ -121,14 +121,15 @@
 
                     <DataGrid x:Name="grdCastList" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,5,0,0"
                       IsReadOnly="True" 
-                      CanUserReorderColumns="False">
+                      CanUserReorderColumns="False"
+                      Loaded="grdCastList_Loaded">
                     </DataGrid>
 
                 </Grid>
 
             </TabItem>
 
-            <TabItem Header="Transcript" Width="100px" Visibility="Collapsed">
+            <TabItem x:Name="tbTranscript" Header="Transcript" Width="100px" Visibility="Collapsed">
 
                 <Grid Margin="5,5,5,5">
                     <Grid.ColumnDefinitions>
@@ -154,7 +155,7 @@
 
             </TabItem>
 
-            <TabItem x:Name="castDetailTab" Header="New Cast" Width="100px" FontWeight="Bold" Foreground="Red" Visibility="Collapsed">
+            <TabItem x:Name="tbCastDetail" Header="New Cast" Width="100px" FontWeight="Bold" Foreground="Red" Visibility="Collapsed">
 
                 <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
@@ -163,6 +164,11 @@
                         <ColumnDefinition />
                         <ColumnDefinition Width="20px"/>
                     </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="40px"/>
+                    </Grid.RowDefinitions>
 
                     <StackPanel Grid.Column="1">
                         <Label Content="Person:" Height="25" Margin="0,10,0,0"></Label>
@@ -176,6 +182,11 @@
                         <ComboBox x:Name="cbCastStatus" Text="" Height="25"  Margin="0,10,0,0"></ComboBox>
                         <TextBox x:Name="txtCastEnglishText" Text="" Height="100" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Margin="0,10,0,0"></TextBox>
                         <TextBox x:Name="txtCastLocalText" Text="" Height="100" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Margin="0,10,0,0"></TextBox>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Button x:Name="btnCastCancel" Content="Cancel" Margin="0,0,20,0" Width="100" Height="30" Click="btnCastCancel_Click"/>
+                        <Button x:Name="btnCastSave" Content="Save" Width="100" Height="30" Click="btnCastSave_Click"/>
                     </StackPanel>
 
                 </Grid>

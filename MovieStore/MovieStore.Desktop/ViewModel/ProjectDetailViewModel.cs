@@ -17,18 +17,27 @@ namespace MovieStore.Desktop.ViewModel
         private IMovieService _movieService;
         private IProjectCastService _castService;
         private ILanguageService _languageService;
+        private IPersonService _personService;
 
-        public ProjectDetailViewModel(IProjectService service, IMovieService moviewService, IProjectCastService castService, ILanguageService languageService)
+        public ProjectDetailViewModel(
+            IProjectService service,
+            IMovieService moviewService,
+            IProjectCastService castService,
+            ILanguageService languageService,
+            IPersonService personService)
         {
             this._service = service;
             this._movieService = moviewService;
             this._castService = castService;
             this._languageService = languageService;
+            this._personService = personService;
         }
 
         public Guid Id { get; set; }
 
         public Project Rec { get; set; }
+
+        public ProjectCast CastRec { get; set; }
 
         public void LoadRec(Guid id)
         {
@@ -50,6 +59,7 @@ namespace MovieStore.Desktop.ViewModel
         {
             Id = Guid.Empty;
             Rec = new Project();
+            CastRec = new ProjectCast();
         }
 
         #region CRUD
@@ -66,7 +76,36 @@ namespace MovieStore.Desktop.ViewModel
 
         #endregion
 
+        #region Cast CRUD 
+
+        public async Task<ProjectCast> GetCastById(Guid id)
+        {
+            return await _castService.GetByIdAsync(id);
+        }
+
+        public async Task<bool> AddCast()
+        {
+            var result = await _castService.Add(CastRec, UserInfo.UserId);
+
+            return result == null ? false : true;
+        }
+
+        public async Task<bool> UpdateCast()
+        {
+            var result = await _castService.Update(CastRec.Id, CastRec, UserInfo.UserId);
+
+            return result == null ? false : true;
+        }
+
+        public async Task<bool> DeleteCast(Guid id)
+        {
+            return await _castService.Delete(CastRec.Id, UserInfo.UserId);
+        }
+
+        #endregion
+
         #region GET METHODS
+
         public List<SelectListGuidVM> GetMovieList()
         {
             return _movieService.GetSelectList();
@@ -102,6 +141,15 @@ namespace MovieStore.Desktop.ViewModel
                 return _languageService.GetAll(a => a.IsDeleted == false && (a.Code.Contains(searchKey) 
                 || a.Name.Contains(searchKey) 
                 || a.NativeName.Contains(searchKey))).ToList();
+        }
+
+        public List<SelectListGuidVM> GetPersonList()
+        {
+            return _personService.GetAll().Select(s => new SelectListGuidVM()
+            {
+                Text = s.Name,
+                Value = s.Id
+            }).ToList();
         }
 
         #endregion

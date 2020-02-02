@@ -51,7 +51,7 @@ namespace MovieStore.Data.Service
 
             if (!status.IsNull() && !Validation.IsNullOrEmptyEnum<ProjectStatus>(status.Value))
             {
-                query = query.Where(a => a.MovieId == movieId).AsQueryable();
+                query = query.Where(a => a.Status == status).AsQueryable();
             }
 
             if (!languageId.IsNullOrEmpty())

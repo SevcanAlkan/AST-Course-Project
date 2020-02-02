@@ -15,6 +15,9 @@ namespace MovieStore.Data.Helper
         {
             FieldInfo fieldInfo = enumObj.GetType().GetField(enumObj.ToString());
 
+            if (fieldInfo == null)
+                return "";
+
             object[] attribArray = fieldInfo.GetCustomAttributes(false);
 
             if (attribArray.Length == 0)

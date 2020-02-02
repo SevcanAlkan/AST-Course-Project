@@ -81,10 +81,6 @@ namespace MovieStore.Desktop.Views
             this.cbMovie.DisplayMemberPath = "Text";
             this.cbMovie.SelectedValuePath = "Value";
             #endregion
-
-            #region Cast Data Grid 
-            this.LoadCastGrid();
-            #endregion
         }
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
@@ -190,37 +186,6 @@ namespace MovieStore.Desktop.Views
                 _window.DataContext = null;
                 _window.LoadProjectList();
             }
-        }
-
-        #region Project Cast 
-
-        private void LoadCastGrid()
-        {
-
-        }
-
-        private void btnCastAdd_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnCastEdit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnCastDelete_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnLoadTranscript_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
-        #endregion
-
+        }       
     }
 }
