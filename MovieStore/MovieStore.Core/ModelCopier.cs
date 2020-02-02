@@ -47,6 +47,12 @@ namespace MovieStore.Core
 
             foreach (PropertyDescriptor fromProperty in fromProperties)
             {
+                bool dontCopy = fromProperty.Attributes.OfType<ModelCopierAttribute>().Where(a=> a.DontCopy).Any();
+                if (dontCopy)
+                {
+                    continue;
+                }
+
                 PropertyDescriptor toProperty = toProperties.Find(fromProperty.Name, true /* ignoreCase */);
                 if (toProperty != null && !toProperty.IsReadOnly)
                 {

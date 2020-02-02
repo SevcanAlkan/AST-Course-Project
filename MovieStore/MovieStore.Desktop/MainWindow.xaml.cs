@@ -32,6 +32,8 @@ namespace MovieStore.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
+        private new readonly string Title = "Moview Dubbing Studio Manager";
+
         private User _currentUser;
         private User CurrentUser
         {
@@ -53,7 +55,7 @@ namespace MovieStore.Desktop
             }
         }
 
-        public Guid Id { get; set; }     
+        public Guid Id { get; set; }
 
         private ViewModelLocator _viewModelLocator;
 
@@ -70,6 +72,8 @@ namespace MovieStore.Desktop
             {
                 this.CurrentUser = user;
                 UserInfo.UserId = user.Id;
+                DataContext = _viewModelLocator.HomeViewModel;
+                this.SetTitle("Home");
             }
 
             if (!CurrentUser.Id.IsNotValid())
@@ -94,6 +98,8 @@ namespace MovieStore.Desktop
             this.DataContext = _viewModelLocator.LoginViewModel;
             this.windowContent.Focus();
 
+            this.SetTitle();
+
             this.txtUserName.Text = "";
             this.btnLogout.IsEnabled = false;
             this.btnSettings.IsEnabled = false;
@@ -109,6 +115,11 @@ namespace MovieStore.Desktop
 
             //Then close the app.
             Application.Current.Shutdown();
+        }
+
+        private void SetTitle(string additionalText = "")
+        {
+            this.tbWindowTitle.Text = additionalText != string.Empty ? this.Title + " - " + additionalText : this.Title;
         }
 
         #region Generic Events
@@ -176,46 +187,55 @@ namespace MovieStore.Desktop
         private void liHome_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DataContext = _viewModelLocator.HomeViewModel;
+            this.SetTitle("Home");
         }
 
         private void liProject_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            DataContext = _viewModelLocator.ProjectListViewModel;
+            this.SetTitle("Project");
         }
 
         private void liMovie_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            DataContext = null;
+            this.SetTitle("Movie");
         }
 
         private void liUser_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DataContext = _viewModelLocator.UserListViewModel;
+            this.SetTitle("User");
         }
 
         private void liLanguage_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DataContext = _viewModelLocator.LanguageListViewModel;
+            this.SetTitle("Language");
         }
 
         private void liTag_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DataContext = _viewModelLocator.TagListViewModel;
+            this.SetTitle("Tag");
         }
 
         private void liPublisher_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DataContext = _viewModelLocator.PublisherListViewModel;
+            this.SetTitle("Publisher");
         }
 
         private void liPerson_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DataContext = _viewModelLocator.PersonListViewModel;
+            this.SetTitle("Person");
         }
 
         private void liGenre_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DataContext = _viewModelLocator.GenreListViewModel;
+            this.SetTitle("Genre");
         }
 
 
@@ -275,6 +295,15 @@ namespace MovieStore.Desktop
         public void LoadUserList()
         {
             DataContext = _viewModelLocator.UserListViewModel;
+        }
+
+        public void LoadProjectDetail()
+        {
+            DataContext = _viewModelLocator.ProjectDetailViewModel;
+        }
+        public void LoadProjectList()
+        {
+            DataContext = _viewModelLocator.ProjectListViewModel;
         }
 
         #endregion

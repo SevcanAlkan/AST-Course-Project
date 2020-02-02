@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\EnumHelper.cs" />
     <Compile Include="Migrations\201911062248084_T2.cs" />
     <Compile Include="Migrations\201911062248084_T2.designer.cs">
       <DependentUpon>201911062248084_T2.cs</DependentUpon>
@@ -84,6 +85,10 @@
     <Compile Include="Service\TagService.cs" />
     <Compile Include="SubStructure\BaseService.cs" />
     <Compile Include="SubStructure\Repository.cs" />
+    <Compile Include="ViewModel\MovieVM.cs" />
+    <Compile Include="ViewModel\ProjectCastVM.cs" />
+    <Compile Include="ViewModel\ProjectVM.cs" />
+    <Compile Include="ViewModel\SelectListVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MovieStore.Core\MovieStore.Core.csproj">

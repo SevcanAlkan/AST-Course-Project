@@ -48,9 +48,12 @@
     <Compile Include="Enum\ContentType.cs" />
     <Compile Include="Enum\ProjectStatus.cs" />
     <Compile Include="ModelCopier.cs" />
+    <Compile Include="ModelCopierAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\FormValidation.cs" />
     <Compile Include="Validation\GuidValidation.cs" />
     <Compile Include="Validation\Validation.cs" />
+    <Compile Include="ViewModel\BaseVM.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
