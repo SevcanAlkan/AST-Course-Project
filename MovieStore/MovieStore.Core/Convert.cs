@@ -8,7 +8,7 @@ namespace MovieStore.Core
 {
     public static class Convert
     {
-        public static bool TryParseEnum<TEnum>(this int enumValue, out TEnum retVal)
+        public static bool TryParseEnum<TEnum>(this short enumValue, out TEnum retVal)
         {
             retVal = default(TEnum);
             bool success = System.Enum.IsDefined(typeof(TEnum), enumValue);

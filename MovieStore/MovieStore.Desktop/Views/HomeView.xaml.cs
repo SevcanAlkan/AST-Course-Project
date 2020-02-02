@@ -27,10 +27,6 @@ namespace MovieStore.Desktop.Views
         {
             InitializeComponent();
 
-            grdMain.AddFilter(FilterHelper.New("serchBox", 1, UI.Enums.FilterTypeEnum.TextBox, "Search"));
-            grdMain.AddFilter(FilterHelper.New("SearchByName", 1, UI.Enums.FilterTypeEnum.TextBox, "Search By Name"));
-
-            grdMain.Load();
         }
 
         private HomeViewModel _vm

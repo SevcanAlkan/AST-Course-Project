@@ -13,7 +13,7 @@ namespace MovieStore.Core.Validation
             return value == null;
         }
 
-        public static bool IsNotValid(this Guid? value)
+        public static bool IsNullOrEmpty(this Guid? value)
         {
             return value == null || value == Guid.Empty;
         }
@@ -37,14 +37,13 @@ namespace MovieStore.Core.Validation
             return value == null || DateTime.MinValue == value;
         }
 
-        private static bool IsNullOrEmptyEnum<T>(T value) where T : new()
+        public static bool IsNullOrEmptyEnum<T>(T value) where T : new()
         {
             byte val = Convert.ToByte(value);
             if (value == null || val == 0)
                 return true;
 
-            T result = new T();
-            if (!Convert.TryParseEnum<T>(val, out result))
+            if (!Convert.TryParseEnum<T>(val, out T result))
                 return false;
 
             return false;
