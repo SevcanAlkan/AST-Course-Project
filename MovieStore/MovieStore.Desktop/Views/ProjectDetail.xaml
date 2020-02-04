@@ -155,7 +155,7 @@
 
             </TabItem>
 
-            <TabItem x:Name="tiCastDetail" Header="New Cast" Width="100px" FontWeight="Bold" Foreground="Red" Visibility="Collapsed">
+            <TabItem x:Name="tiCastDetail" Header="Cast Detail" Width="100px" FontWeight="Bold" Foreground="Red" Visibility="Collapsed">
 
                 <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
