@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieStore.Core
 {
@@ -47,7 +45,7 @@ namespace MovieStore.Core
 
             foreach (PropertyDescriptor fromProperty in fromProperties)
             {
-                bool dontCopy = fromProperty.Attributes.OfType<ModelCopierAttribute>().Where(a=> a.DontCopy).Any();
+                bool dontCopy = fromProperty.Attributes.OfType<ModelCopierAttribute>().Where(a => a.DontCopy).Any();
                 if (dontCopy)
                 {
                     continue;

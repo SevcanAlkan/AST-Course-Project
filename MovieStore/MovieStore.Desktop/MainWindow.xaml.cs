@@ -1,29 +1,11 @@
 ﻿using MovieStore.Core.Validation;
-using MovieStore.Data;
-using MovieStore.Data.Service;
-using MovieStore.Data.SubStructure;
-using MovieStore.Desktop.ViewModel;
+using MovieStore.Desktop.Helper;
 using MovieStore.Domain;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MovieStore.Core.Validation;
-using MovieStore.Desktop.Helper;
-using MovieStore.Desktop.DI;
 
 namespace MovieStore.Desktop
 {

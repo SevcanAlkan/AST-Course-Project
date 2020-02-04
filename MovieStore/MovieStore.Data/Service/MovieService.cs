@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MovieStore.Data.SubStructure;
+﻿using MovieStore.Data.SubStructure;
 using MovieStore.Data.ViewModel;
 using MovieStore.Domain;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MovieStore.Data.Service
 {
@@ -26,7 +23,7 @@ namespace MovieStore.Data.Service
         public List<SelectListGuidVM> GetSelectList()
         {
             return this.AsQueryable()
-                .Where(a=> a.IsDeleted == false)
+                .Where(a => a.IsDeleted == false)
                 .Select(s => new SelectListGuidVM()
                 {
                     Value = s.Id,

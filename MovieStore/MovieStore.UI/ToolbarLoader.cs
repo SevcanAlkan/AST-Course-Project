@@ -1,9 +1,6 @@
 ﻿using MovieStore.UI.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -21,7 +18,7 @@ namespace MovieStore.UI
 
                         break;
                     case Enums.FilterTypeEnum.TextBox:
-                      
+
 
                         if (item.LabelText != string.Empty)
                         {

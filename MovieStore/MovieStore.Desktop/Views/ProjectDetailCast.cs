@@ -2,26 +2,15 @@
 using MovieStore.Core.Validation;
 using MovieStore.Data.Helper;
 using MovieStore.Data.ViewModel;
-using MovieStore.Desktop.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MovieStore.Desktop.Views
 {
     public partial class ProjectDetail
-    {        
+    {
         private void LoadCastGrid()
         {
             this.grdCastList.ItemsSource = _vm.GetCastList();
@@ -87,8 +76,8 @@ namespace MovieStore.Desktop.Views
         private void LoadCastRec(Guid? id = null)
         {
             this._vm.CastRec = new Domain.ProjectCast();
-            this.BindDataToCastFormComponents();            
-            
+            this.BindDataToCastFormComponents();
+
             if (!id.IsNullOrEmpty())
             {
                 if (!_vm.CastRec.IsNull())
@@ -175,7 +164,7 @@ namespace MovieStore.Desktop.Views
 
             }
         }
-               
+
         private async void btnCastSave_Click(object sender, RoutedEventArgs e)
         {
             _vm.CastRec.LocalLanguageText = txtCastLocalText.Text;
@@ -190,7 +179,7 @@ namespace MovieStore.Desktop.Views
             _vm.CastRec.Status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM).Value);
 
             if (_vm.CastRec == null || _vm.CastRec.Id == null || _vm.CastRec.Id.IsNotValid())
-            {               
+            {
                 await _vm.AddCast();
             }
             else

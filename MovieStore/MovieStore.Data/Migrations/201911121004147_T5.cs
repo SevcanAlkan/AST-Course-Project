@@ -1,8 +1,7 @@
 ﻿namespace MovieStore.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class T5 : DbMigration
     {
         public override void Up()
@@ -20,57 +19,57 @@
             CreateTable(
                 "dbo.ProjectCast",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        ProjectId = c.Guid(nullable: false),
-                        PersonId = c.Guid(nullable: false),
-                        EnglishText = c.String(nullable: false),
-                        LocalLanguageText = c.String(nullable: false),
-                        Status = c.Short(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    ProjectId = c.Guid(nullable: false),
+                    PersonId = c.Guid(nullable: false),
+                    EnglishText = c.String(nullable: false),
+                    LocalLanguageText = c.String(nullable: false),
+                    Status = c.Short(nullable: false),
+                    IsDeleted = c.Boolean(nullable: false),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Person", t => t.PersonId)
                 .ForeignKey("dbo.Project", t => t.ProjectId)
                 .Index(t => t.ProjectId)
                 .Index(t => t.PersonId);
-            
+
             CreateTable(
                 "dbo.Project",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        MovieId = c.Guid(nullable: false),
-                        Status = c.Short(nullable: false),
-                        DueDate = c.DateTime(),
-                        Code = c.String(nullable: false, maxLength: 10),
-                        Subject = c.String(nullable: false, maxLength: 100),
-                        Notes = c.String(maxLength: 500),
-                        TranslateLanguageId = c.Guid(nullable: false),
-                        CreatedBy = c.Guid(nullable: false),
-                        CreateDateTime = c.DateTime(nullable: false),
-                        UpdateBy = c.Guid(),
-                        UpdateDateTime = c.DateTime(),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    MovieId = c.Guid(nullable: false),
+                    Status = c.Short(nullable: false),
+                    DueDate = c.DateTime(),
+                    Code = c.String(nullable: false, maxLength: 10),
+                    Subject = c.String(nullable: false, maxLength: 100),
+                    Notes = c.String(maxLength: 500),
+                    TranslateLanguageId = c.Guid(nullable: false),
+                    CreatedBy = c.Guid(nullable: false),
+                    CreateDateTime = c.DateTime(nullable: false),
+                    UpdateBy = c.Guid(),
+                    UpdateDateTime = c.DateTime(),
+                    IsDeleted = c.Boolean(nullable: false),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Movie", t => t.MovieId)
                 .ForeignKey("dbo.Language", t => t.TranslateLanguageId)
                 .Index(t => t.MovieId)
                 .Index(t => t.TranslateLanguageId);
-            
+
             CreateTable(
                 "dbo.Language",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Code = c.String(nullable: false, maxLength: 5),
-                        Name = c.String(nullable: false, maxLength: 100),
-                        NativeName = c.String(nullable: false, maxLength: 100),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    Code = c.String(nullable: false, maxLength: 5),
+                    Name = c.String(nullable: false, maxLength: 100),
+                    NativeName = c.String(nullable: false, maxLength: 100),
+                    IsDeleted = c.Boolean(nullable: false),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
             AddColumn("dbo.Movie", "LanguageId", c => c.Guid(nullable: false));
             AddColumn("dbo.Movie", "CreatedBy", c => c.Guid(nullable: false));
             AddColumn("dbo.Movie", "CreateDateTime", c => c.DateTime(nullable: false));
@@ -85,49 +84,49 @@
             DropTable("dbo.MovieContent");
             DropTable("dbo.MovieReview");
         }
-        
+
         public override void Down()
         {
             CreateTable(
                 "dbo.MovieReview",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Rate = c.Short(nullable: false),
-                        Comment = c.String(maxLength: 500),
-                        Date = c.DateTime(nullable: false),
-                        UserId = c.Guid(nullable: false),
-                        MovieId = c.Guid(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    Rate = c.Short(nullable: false),
+                    Comment = c.String(maxLength: 500),
+                    Date = c.DateTime(nullable: false),
+                    UserId = c.Guid(nullable: false),
+                    MovieId = c.Guid(nullable: false),
+                    IsDeleted = c.Boolean(nullable: false),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.MovieContent",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Type = c.Short(nullable: false),
-                        Content = c.String(nullable: false, maxLength: 1000),
-                        AddDate = c.DateTime(nullable: false),
-                        MovieId = c.Guid(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    Type = c.Short(nullable: false),
+                    Content = c.String(nullable: false, maxLength: 1000),
+                    AddDate = c.DateTime(nullable: false),
+                    MovieId = c.Guid(nullable: false),
+                    IsDeleted = c.Boolean(nullable: false),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Collection",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        UserId = c.Guid(nullable: false),
-                        MovieId = c.Guid(nullable: false),
-                        AddDate = c.DateTime(nullable: false),
-                        BoughtPrice = c.Double(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    UserId = c.Guid(nullable: false),
+                    MovieId = c.Guid(nullable: false),
+                    AddDate = c.DateTime(nullable: false),
+                    BoughtPrice = c.Double(nullable: false),
+                    IsDeleted = c.Boolean(nullable: false),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
             AddColumn("dbo.Movie", "Price", c => c.Double(nullable: false));
             AddColumn("dbo.Movie", "SoldAmount", c => c.Int(nullable: false));
             AddColumn("dbo.Movie", "Rate", c => c.Short(nullable: false));

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MovieStore.Core.Enum;
+﻿using MovieStore.Core.Enum;
 using MovieStore.Data.Helper;
 using MovieStore.Data.SubStructure;
 using MovieStore.Data.ViewModel;
 using MovieStore.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MovieStore.Data.Service
 {

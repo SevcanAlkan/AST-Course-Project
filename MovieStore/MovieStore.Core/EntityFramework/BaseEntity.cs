@@ -1,9 +1,5 @@
 ﻿using MovieStore.Core.Validation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieStore.Core.EntityFramework
 {
@@ -19,7 +15,7 @@ namespace MovieStore.Core.EntityFramework
         DateTime CreateDateTime { get; set; }
         Guid? UpdateBy { get; set; }
         DateTime? UpdateDateTime { get; set; }
-        
+
     }
 
     public class BaseEntity : IBaseEntity
@@ -35,6 +31,6 @@ namespace MovieStore.Core.EntityFramework
         public Guid CreatedBy { get; set; }
         public DateTime CreateDateTime { get; set; }
         public Guid? UpdateBy { get; set; }
-        public DateTime? UpdateDateTime { get; set; }        
+        public DateTime? UpdateDateTime { get; set; }
     }
 }

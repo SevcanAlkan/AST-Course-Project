@@ -1,8 +1,7 @@
 ﻿namespace MovieStore.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class T2R1 : DbMigration
     {
         public override void Up()
@@ -46,7 +45,7 @@
             AddForeignKey("dbo.MovieTag", "MovieId", "dbo.Movie", "Id");
             AddForeignKey("dbo.MovieTag", "TagId", "dbo.Tag", "Id");
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.MovieTag", "TagId", "dbo.Tag");

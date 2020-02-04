@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MovieStore.Core.Enum;
+﻿using MovieStore.Core.Enum;
+using MovieStore.Core.Validation;
+using MovieStore.Data.Helper;
 using MovieStore.Data.SubStructure;
 using MovieStore.Data.ViewModel;
 using MovieStore.Domain;
-using MovieStore.Core.Validation;
-using MovieStore.Data.Helper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MovieStore.Data.Service
 {
@@ -34,7 +32,7 @@ namespace MovieStore.Data.Service
         {
             var query = this.Repository.Get();
 
-            if(!startDate.IsNullOrEmpty())
+            if (!startDate.IsNullOrEmpty())
             {
                 query = query.Where(a => a.DueDate > startDate).AsQueryable();
             }
@@ -59,8 +57,8 @@ namespace MovieStore.Data.Service
                 query = query.Where(a => a.TranslateLanguageId == languageId).AsQueryable();
             }
 
-            
-            query = query.Where(a => showIsDeleted || !a.IsDeleted).AsQueryable();            
+
+            query = query.Where(a => showIsDeleted || !a.IsDeleted).AsQueryable();
 
             var result = query.ToList().Select(a => new ProjectVM()
             {
@@ -69,7 +67,7 @@ namespace MovieStore.Data.Service
                 Code = a.Code,
                 Subject = a.Subject,
                 DueDate = a.DueDate != null && a.DueDate != DateTime.MinValue ? a.DueDate.Value.ToString("yyyy-MM-dd hh:mm") : " - ",
-                MovieName = _movieRepository.Query().Where(m => m.Id == a.MovieId).Select(s=> s.Name).FirstOrDefault(),
+                MovieName = _movieRepository.Query().Where(m => m.Id == a.MovieId).Select(s => s.Name).FirstOrDefault(),
                 MovieId = a.MovieId,
                 Status = a.Status,
                 StatusStr = EnumHelper.GetDescription<ProjectStatus>(a.Status),

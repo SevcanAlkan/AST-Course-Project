@@ -2,13 +2,8 @@
 using MovieStore.Data.Service;
 using MovieStore.Data.SubStructure;
 using MovieStore.Desktop.ViewModel;
-using MovieStore.Domain;
 using Ninject.Modules;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieStore.Desktop.DI
 {
