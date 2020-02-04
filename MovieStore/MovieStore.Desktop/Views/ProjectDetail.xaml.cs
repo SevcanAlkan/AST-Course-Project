@@ -40,11 +40,10 @@ namespace MovieStore.Desktop.Views
         private void LoadData()
         {
             _vm.LoadRec(_window.Id);
+            this.BindDataToComponentts();
 
             if (_vm.Rec != null)
             {
-                this.BindDataToComponentts();
-
                 this.txtCode.Text = _vm.Rec.Code;
                 this.txtSubject.Text = _vm.Rec.Subject;
                 this.dpDueDate.SelectedDate = _vm.Rec.DueDate == DateTime.MinValue || _vm.Rec.DueDate == null ? DateTime.Now : _vm.Rec.DueDate.Value;

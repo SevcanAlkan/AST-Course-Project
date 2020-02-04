@@ -19,7 +19,7 @@
         <Label Content="Project Detail" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Left" FontSize="25" />
 
         <TabControl x:Name="tcMain" Grid.Column="1" Grid.Row="1">
-            <TabItem Header="Main" Width="100px">
+            <TabItem Header="Main" Width="100px" x:Name="tiMain">
 
                 <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
@@ -89,7 +89,7 @@
 
             </TabItem>
 
-            <TabItem Header="Cast" Width="100px">
+            <TabItem Header="Cast" Width="100px"  x:Name="tiCast">
 
                 <Grid Margin="5,5,5,5">
                     <Grid.ColumnDefinitions>
@@ -155,7 +155,7 @@
 
             </TabItem>
 
-            <TabItem x:Name="tbCastDetail" Header="New Cast" Width="100px" FontWeight="Bold" Foreground="Red" Visibility="Collapsed">
+            <TabItem x:Name="tiCastDetail" Header="New Cast" Width="100px" FontWeight="Bold" Foreground="Red" Visibility="Collapsed">
 
                 <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>

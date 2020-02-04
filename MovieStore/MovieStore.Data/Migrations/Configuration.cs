@@ -3,6 +3,7 @@
     using MovieStore.Domain;
     using System;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<MovieStoreDbContext>
     {
@@ -32,6 +33,7 @@
 
                 context.Users.AddOrUpdate(p => p.UserName, new User() { Id = Guid.NewGuid(), UserName = "admin", Password = "admin", DisplayName = "Admin", IsDeleted = false });
                 context.Users.AddOrUpdate(p => p.UserName, new User() { Id = Guid.NewGuid(), UserName = "test", Password = "test", DisplayName = "Test User", IsDeleted = false });
+                context.Users.AddOrUpdate(p => p.UserName, new User() { Id = Guid.NewGuid(), UserName = "sevcanalkan", Password = "123456", DisplayName = "Sevcan Alkan", IsDeleted = false });
 
                 #endregion
 
@@ -237,6 +239,89 @@
                 context.Genres.AddOrUpdate(p => p.Name, new Genre() { Id = Guid.NewGuid(), Name = "Western", Description = @"Westerns are the major defining genre of the American film industry - a eulogy to the early days of the expansive American frontier. They are one of the oldest, most enduring genres with very recognizable plots, elements, and characters (six-guns, horses, dusty towns and trails, cowboys, Indians, etc.). They have evolved over time, however, and have often been re-defined, re-invented and expanded, dismissed, re-discovered, and spoofed. Variations have included Italian 'spaghetti' westerns, epic westerns, comic westerns, westerns with outlaws or marshals as the main characters, revenge westerns, and revisionist westerns. ", IsDeleted = false });
 
                 #endregion
+
+                #region Persons
+
+                var martinId = Guid.NewGuid();
+                context.Persons.AddOrUpdate(p => p.Name, new Person() { Id = martinId, Name = "Martin Lawrence", Age = 54, Bio = @"Martin Fitzgerald Lawrence is an American stand-up comedian, actor, producer, talk show host, writer, and former Golden Gloves boxer. Lawrence came to fame during the 1990s, establishing a Hollywood career as a leading actor, most notably in the Fox television sitcom Martin and the films House Party, Boomerang, Bad Boys, Wild Hogs, Nothing to Lose, Blue Streak, Life, Big Momma's House, and A Thin Line Between Love & Hate." });
+
+                var willId = Guid.NewGuid();
+                context.Persons.AddOrUpdate(p => p.Name, new Person() { Id = willId, Name = "Will Smith", Age = 51, Bio = @"Willard Will Carroll Smith Jr., is an American actor and rapper.[4] In April 2007, Newsweek called him 'the most powerful actor in Hollywood'. Smith has been nominated for five Golden Globe Awards and two Academy Awards, and has won four Grammy Awards." });
+
+                var benId = Guid.NewGuid();
+                context.Persons.AddOrUpdate(p => p.Name, new Person() { Id = benId, Name = "Ben Affleck", Age = 47, Bio = @"Benjamin Géza Affleck-Boldt (born August 15, 1972) is an American actor, director, producer, and screenwriter. His accolades include two Academy Awards and three Golden Globe Awards. He began his career as a child when he starred in the PBS educational series The Voyage of the Mimi (1984, 1988). He later appeared in the independent" });
+
+                var henryId = Guid.NewGuid();
+                context.Persons.AddOrUpdate(p => p.Name, new Person() { Id = henryId, Name = "Henry Cavill", Age = 36, Bio = @"Henry William Dalgliesh Cavill (/ˈkævəl/; born 5 May 1983) is an English actor.[1][2][3][4] He began his career with roles in the feature adaptations of The Count of Monte Cristo (2002) and I Capture the Castle (2003). He later appeared in supporting roles in several television series, including BBC's The Inspector Lynley Myst." });
+
+                var amyId = Guid.NewGuid();
+                context.Persons.AddOrUpdate(p => p.Name, new Person() { Id = amyId, Name = "Amy Adams", Age = 45, Bio = @"Amy Lou Adams (born August 20, 1974) is an American actress. Known for both her comedic and dramatic performances, she has placed three times in annual rankings of the highest-paid actresses in the world. Her accolades include two Golden Globes, and nominations for six Academy Awards and seven British Academy Film Awards." });
+
+                #endregion
+
+                #region Publisher
+
+                context.Publishers.AddOrUpdate(p => p.Name, new Publisher() { Id = Guid.NewGuid(), Name = "Warner Bros. Pictures" });
+                context.Publishers.AddOrUpdate(p => p.Name, new Publisher() { Id = Guid.NewGuid(), Name = "Sony Pictures Releasing" });
+
+                #endregion
+
+                #region Tag
+
+                context.Tags.AddOrUpdate(p => p.Name, new Tag() { Id = Guid.NewGuid(), Name = "Adventures" });
+                context.Tags.AddOrUpdate(p => p.Name, new Tag() { Id = Guid.NewGuid(), Name = "Super Hero" });
+                context.Tags.AddOrUpdate(p => p.Name, new Tag() { Id = Guid.NewGuid(), Name = "Batman" });
+                context.Tags.AddOrUpdate(p => p.Name, new Tag() { Id = Guid.NewGuid(), Name = "Superman" });
+                context.Tags.AddOrUpdate(p => p.Name, new Tag() { Id = Guid.NewGuid(), Name = "Fight" });
+                context.Tags.AddOrUpdate(p => p.Name, new Tag() { Id = Guid.NewGuid(), Name = "Cop Action" });
+                context.Tags.AddOrUpdate(p => p.Name, new Tag() { Id = Guid.NewGuid(), Name = "Comedy Criminal" });
+
+                #endregion
+
+                context.SaveChanges();
+
+                var languages = context.Languages.ToList();
+                var publishers = context.Publishers.ToList();
+          
+                #region Movies
+
+                var languageId = languages.Where(c => c.Name == "English").Select(s => s.Id).FirstOrDefault();
+                var userId = context.Users.Where(c => c.UserName == "admin").Select(s => s.Id).FirstOrDefault();
+                var badBoysId = Guid.NewGuid();
+                var moviePublisherId = publishers.Where(c => c.Name == "Sony Pictures Releasing").Select(s => s.Id).FirstOrDefault();
+                context.Movies.AddOrUpdate(p => p.Name, new Movie() { Id = badBoysId, Name = "Bad Boys II", Description = @"Bad Boys II is a 2003 American buddy cop action comedy film directed by Michael Bay, produced by Jerry Bruckheimer, and starring Martin Lawrence and Will Smith. The sequel to the 1995 film Bad Boys and the second film in the Bad Boys trilogy, the film follows detectives Burnett and Lowrey investigating the flow of illegal drugs going into Miami.", Year = 2003, LanguageId = languageId, PublisherId = moviePublisherId, CreatedBy = userId });
+
+                moviePublisherId = publishers.Where(c => c.Name == "Warner Bros. Pictures").Select(s => s.Id).FirstOrDefault();
+                var batmanId = Guid.NewGuid();
+                context.Movies.AddOrUpdate(p => p.Name, new Movie() { Id = batmanId, Name = "Batman v Superman: Dawn of Justice", Description = @"Batman v Superman: Dawn of Justice is a 2016 American superhero film featuring the DC Comics characters Batman and Superman. It is a follow-up to 2013's Man of Steel and the second installment in the DC Extended Universe (DCEU).[4] The film is directed by Zack Snyder, written by Chris ", Year = 2016, LanguageId = languageId, PublisherId = moviePublisherId, CreatedBy = userId });
+
+                #endregion
+
+                #region Projects
+
+                languageId = languages.Where(c => c.Name == "Bulgarian").Select(s => s.Id).FirstOrDefault();
+                var batmanProjectId = Guid.NewGuid();
+                context.Projects.AddOrUpdate(p => p.Code, new Project() { Id = batmanProjectId, Code = "BG01", Subject = "BatmanVSuperman re work", DueDate = DateTime.Now, Notes = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et nibh nunc. Pellentesque elit sapien, commodo ut porttitor at, aliquam id enim. Sed efficitur tristique justo, in vehicula nisl mattis non.", Status = Core.Enum.ProjectStatus.InProgress, MovieId = batmanId, TranslateLanguageId = languageId, CreatedBy = userId });
+
+                languageId = languages.Where(c => c.Name == "Turkish").Select(s => s.Id).FirstOrDefault();
+                var badBoysProjectId = Guid.NewGuid();
+                context.Projects.AddOrUpdate(p => p.Code, new Project() { Id = badBoysProjectId, Code = "TR01", Subject = "Bad Boys II to Turkish", DueDate = DateTime.Now, Notes = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et nibh nunc. Pellentesque elit sapien, commodo ut porttitor at, aliquam id enim. Sed efficitur tristique justo, in vehicula nisl mattis non. Nulla nec ", Status = Core.Enum.ProjectStatus.Done, MovieId = badBoysId, TranslateLanguageId = languageId, CreatedBy = userId });
+
+                #endregion
+
+                context.SaveChanges();
+
+                #region ProjectCasts
+
+                context.ProjectCasts.AddOrUpdate(p => p.PersonId, new ProjectCast() { Id = Guid.NewGuid(), EnglishText = "-", LocalLanguageText = "-",  Status = Core.Enum.ProjectStatus.Done, ProjectId = batmanProjectId, PersonId = benId});
+                context.ProjectCasts.AddOrUpdate(p => p.PersonId, new ProjectCast() { Id = Guid.NewGuid(), EnglishText = "-", LocalLanguageText = "-", Status = Core.Enum.ProjectStatus.Done, ProjectId = batmanProjectId, PersonId = henryId });
+                context.ProjectCasts.AddOrUpdate(p => p.PersonId, new ProjectCast() { Id = Guid.NewGuid(), EnglishText = "-", LocalLanguageText = "-", Status = Core.Enum.ProjectStatus.InProgress, ProjectId = batmanProjectId, PersonId = amyId });
+                
+                context.ProjectCasts.AddOrUpdate(p => p.PersonId, new ProjectCast() { Id = Guid.NewGuid(), EnglishText = "-", LocalLanguageText = "-", Status = Core.Enum.ProjectStatus.Done, ProjectId = badBoysProjectId, PersonId = willId });
+                context.ProjectCasts.AddOrUpdate(p => p.PersonId, new ProjectCast() { Id = Guid.NewGuid(), EnglishText = "-", LocalLanguageText = "-", Status = Core.Enum.ProjectStatus.Done, ProjectId = badBoysProjectId, PersonId = martinId });
+
+                #endregion
+
 
                 context.SaveChanges();
             }

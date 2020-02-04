@@ -73,13 +73,15 @@ namespace MovieStore.Desktop.Views
             #endregion
         }
 
-        private void LoadCastRec(Guid? id = null)
+        private async void LoadCastRec(Guid? id = null)
         {
             this._vm.CastRec = new Domain.ProjectCast();
-            this.BindDataToCastFormComponents();
+            this.BindDataToCastFormComponents();            
 
             if (!id.IsNullOrEmpty())
             {
+                _vm.CastRec = await _vm.GetCastById(id.Value);
+
                 if (!_vm.CastRec.IsNull())
                 {
                     var statusItem = cbCastStatus.Items.OfType<SelectListVM>().FirstOrDefault(x => x.Value == EnumHelper.GetSelectItem<ProjectStatus>(_vm.CastRec.Status).Value);
@@ -98,8 +100,8 @@ namespace MovieStore.Desktop.Views
                 txtCastEnglishText.Text = "";
             }
 
-            this.tbCastDetail.Visibility = Visibility.Visible;
-            this.tcMain.SelectedIndex = 2;
+            this.tiCastDetail.Visibility = Visibility.Visible;
+            this.tiCastDetail.IsSelected = true;
 
             this.btnSave.IsEnabled = false;
             this.btnCancel.IsEnabled = false;
@@ -107,7 +109,9 @@ namespace MovieStore.Desktop.Views
 
         private void UnloadCastRec()
         {
-            this.tbCastDetail.Visibility = Visibility.Hidden;
+            this.tiCastDetail.Visibility = Visibility.Hidden;
+            this.tiCastDetail.IsSelected = false;
+            this.tiCast.IsSelected = true;
             this.tcMain.SelectedIndex = 0;
             this._vm.CastRec = new Domain.ProjectCast();
             this.btnSave.IsEnabled = true;

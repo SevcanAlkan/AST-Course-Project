@@ -28,6 +28,8 @@ namespace MovieStore.Data
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
+            modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
+
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
         }
 
