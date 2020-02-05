@@ -161,7 +161,7 @@ namespace MovieStore.Desktop.Views
 
         private void cbStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM).Value);
+            var status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM<Int32>).Value);
 
             this.FilterGrid(status);
         }

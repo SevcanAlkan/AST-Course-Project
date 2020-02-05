@@ -84,10 +84,10 @@ namespace MovieStore.Desktop.Views
 
                 if (!_vm.CastRec.IsNull())
                 {
-                    var statusItem = cbCastStatus.Items.OfType<SelectListVM>().FirstOrDefault(x => x.Value == EnumHelper.GetSelectItem<ProjectStatus>(_vm.CastRec.Status).Value);
+                    var statusItem = cbCastStatus.Items.OfType<SelectListVM<Int32>>().FirstOrDefault(x => x.Value == EnumHelper.GetSelectItem<ProjectStatus>(_vm.CastRec.Status).Value);
                     cbCastStatus.SelectedIndex = cbCastStatus.Items.IndexOf(statusItem);
 
-                    var personItem = cbCastPerson.Items.OfType<SelectListGuidVM>().FirstOrDefault(x => x.Value == _vm.CastRec.PersonId);
+                    var personItem = cbCastPerson.Items.OfType<SelectListVM<Guid>>().FirstOrDefault(x => x.Value == _vm.CastRec.PersonId);
                     cbCastPerson.SelectedIndex = cbCastPerson.Items.IndexOf(personItem);
 
                     txtCastEnglishText.Text = _vm.CastRec.EnglishText;
@@ -180,7 +180,7 @@ namespace MovieStore.Desktop.Views
 
             _vm.CastRec.ProjectId = _vm.Id;
             _vm.CastRec.PersonId = personId;
-            _vm.CastRec.Status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM).Value);
+            _vm.CastRec.Status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM<Int32>).Value);
 
             if (_vm.CastRec == null || _vm.CastRec.Id == null || _vm.CastRec.Id.IsNotValid())
             {

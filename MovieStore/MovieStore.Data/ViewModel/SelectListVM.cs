@@ -2,15 +2,9 @@
 
 namespace MovieStore.Data.ViewModel
 {
-    public class SelectListVM
+    public class SelectListVM<T>  where T: String, Guid, Int32 
     {
-        public int Value { get; set; }
-        public string Text { get; set; }
-    }
-
-    public class SelectListGuidVM
-    {
-        public Guid Value { get; set; }
+        public T Value { get; set; }
         public string Text { get; set; }
     }
 }

@@ -105,7 +105,7 @@ namespace MovieStore.Desktop.ViewModel
 
         #region GET METHODS
 
-        public List<SelectListGuidVM> GetMovieList()
+        public List<SelectListVM<Guid>> GetMovieList()
         {
             return _movieService.GetSelectList();
         }
@@ -142,9 +142,9 @@ namespace MovieStore.Desktop.ViewModel
                 || a.NativeName.Contains(searchKey))).ToList();
         }
 
-        public List<SelectListGuidVM> GetPersonList()
+        public List<SelectListVM<Guid>> GetPersonList()
         {
-            return _personService.GetAll().Select(s => new SelectListGuidVM()
+            return _personService.GetAll().Select(s => new SelectListVM<Guid>()
             {
                 Text = s.Name,
                 Value = s.Id
