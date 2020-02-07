@@ -39,6 +39,7 @@ namespace MovieStore.Desktop.Views
             {
                 this.txtCode.Text = _vm.Rec.Code;
                 this.txtName.Text = _vm.Rec.Name;
+                this.txtNativeName.Text = _vm.Rec.NativeName;
             }
         }
 
@@ -46,6 +47,7 @@ namespace MovieStore.Desktop.Views
         {
             _vm.Rec.Code = txtCode.Text;
             _vm.Rec.Name = txtName.Text;
+            _vm.Rec.NativeName = txtName.Text;
 
             if (_vm.Id == null || _vm.Id.IsNotValid())
             {

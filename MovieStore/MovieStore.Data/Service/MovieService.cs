@@ -20,11 +20,11 @@ namespace MovieStore.Data.Service
 
         #region Methods                
 
-        public List<SelectListGuidVM> GetSelectList()
+        public List<SelectListVM<Guid>> GetSelectList()
         {
             return this.AsQueryable()
                 .Where(a => a.IsDeleted == false)
-                .Select(s => new SelectListGuidVM()
+                .Select(s => new SelectListVM<Guid>()
                 {
                     Value = s.Id,
                     Text = s.Name
@@ -36,6 +36,6 @@ namespace MovieStore.Data.Service
 
     public interface IMovieService : IBaseService<Movie>
     {
-        List<SelectListGuidVM> GetSelectList();
+        List<SelectListVM<Guid>> GetSelectList();
     }
 }

@@ -67,9 +67,9 @@ namespace MovieStore.Data.Helper
             return values;
         }
 
-        public static List<SelectListVM> GetSelectList<T>()
+        public static List<SelectListVM<Int32>> GetSelectList<T>()
         {
-            List<SelectListVM> list = new List<SelectListVM>();
+            List<SelectListVM<Int32>> list = new List<SelectListVM<Int32>>();
 
             Type genericType = typeof(T);
             if (genericType.IsEnum)
@@ -78,16 +78,16 @@ namespace MovieStore.Data.Helper
                 {
                     Enum enumVal = Enum.Parse(typeof(T), obj.ToString()) as Enum;
                     int intValue = Convert.ToInt32(enumVal);
-                    list.Add(new SelectListVM() { Value = intValue, Text = GetDescription<T>(obj) });
+                    list.Add(new SelectListVM<Int32>() { Value = intValue, Text = GetDescription<T>(obj) });
                 }
             }
 
             return list;
         }
 
-        public static SelectListVM GetSelectItem<T>(T obj)
+        public static SelectListVM<Int32> GetSelectItem<T>(T obj)
         {
-            SelectListVM item = new SelectListVM();
+            SelectListVM<Int32> item = new SelectListVM<Int32>();
 
             Type genericType = typeof(T);
             if (genericType.IsEnum)

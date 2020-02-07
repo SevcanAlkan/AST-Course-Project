@@ -73,19 +73,21 @@ namespace MovieStore.Desktop.Views
             #endregion
         }
 
-        private void LoadCastRec(Guid? id = null)
+        private async void LoadCastRec(Guid? id = null)
         {
             this._vm.CastRec = new Domain.ProjectCast();
-            this.BindDataToCastFormComponents();
+            this.BindDataToCastFormComponents();            
 
             if (!id.IsNullOrEmpty())
             {
+                _vm.CastRec = await _vm.GetCastById(id.Value);
+
                 if (!_vm.CastRec.IsNull())
                 {
-                    var statusItem = cbCastStatus.Items.OfType<SelectListVM>().FirstOrDefault(x => x.Value == EnumHelper.GetSelectItem<ProjectStatus>(_vm.CastRec.Status).Value);
+                    var statusItem = cbCastStatus.Items.OfType<SelectListVM<Int32>>().FirstOrDefault(x => x.Value == EnumHelper.GetSelectItem<ProjectStatus>(_vm.CastRec.Status).Value);
                     cbCastStatus.SelectedIndex = cbCastStatus.Items.IndexOf(statusItem);
 
-                    var personItem = cbCastPerson.Items.OfType<SelectListGuidVM>().FirstOrDefault(x => x.Value == _vm.CastRec.PersonId);
+                    var personItem = cbCastPerson.Items.OfType<SelectListVM<Guid>>().FirstOrDefault(x => x.Value == _vm.CastRec.PersonId);
                     cbCastPerson.SelectedIndex = cbCastPerson.Items.IndexOf(personItem);
 
                     txtCastEnglishText.Text = _vm.CastRec.EnglishText;
@@ -98,8 +100,8 @@ namespace MovieStore.Desktop.Views
                 txtCastEnglishText.Text = "";
             }
 
-            this.tbCastDetail.Visibility = Visibility.Visible;
-            this.tcMain.SelectedIndex = 2;
+            this.tiCastDetail.Visibility = Visibility.Visible;
+            this.tiCastDetail.IsSelected = true;
 
             this.btnSave.IsEnabled = false;
             this.btnCancel.IsEnabled = false;
@@ -107,7 +109,9 @@ namespace MovieStore.Desktop.Views
 
         private void UnloadCastRec()
         {
-            this.tbCastDetail.Visibility = Visibility.Hidden;
+            this.tiCastDetail.Visibility = Visibility.Hidden;
+            this.tiCastDetail.IsSelected = false;
+            this.tiCast.IsSelected = true;
             this.tcMain.SelectedIndex = 0;
             this._vm.CastRec = new Domain.ProjectCast();
             this.btnSave.IsEnabled = true;
@@ -176,7 +180,7 @@ namespace MovieStore.Desktop.Views
 
             _vm.CastRec.ProjectId = _vm.Id;
             _vm.CastRec.PersonId = personId;
-            _vm.CastRec.Status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM).Value);
+            _vm.CastRec.Status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM<Int32>).Value);
 
             if (_vm.CastRec == null || _vm.CastRec.Id == null || _vm.CastRec.Id.IsNotValid())
             {

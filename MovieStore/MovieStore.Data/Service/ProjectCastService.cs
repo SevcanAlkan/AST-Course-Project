@@ -27,6 +27,8 @@ namespace MovieStore.Data.Service
         {
             return this.GetAll(a => a.ProjectId == projectId && a.IsDeleted == false).Select(s => new ProjectCastVM()
             {
+                Id = s.Id,
+                IsDeleted = s.IsDeleted,
                 ProjectId = s.ProjectId,
                 ProjectName = s.Project.Subject,
                 PersonId = s.PersonId,

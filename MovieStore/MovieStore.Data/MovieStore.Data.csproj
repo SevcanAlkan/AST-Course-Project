@@ -68,6 +68,10 @@
     <Compile Include="Migrations\202001101750507_T172.designer.cs">
       <DependentUpon>202001101750507_T172.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002041955206_DateTimeFix.cs" />
+    <Compile Include="Migrations\202002041955206_DateTimeFix.designer.cs">
+      <DependentUpon>202002041955206_DateTimeFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MovieStoreDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,10 +121,11 @@
     <EmbeddedResource Include="Migrations\202001101750507_T172.resx">
       <DependentUpon>202001101750507_T172.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002041955206_DateTimeFix.resx">
+      <DependentUpon>202002041955206_DateTimeFix.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

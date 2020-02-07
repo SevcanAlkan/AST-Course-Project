@@ -40,21 +40,20 @@ namespace MovieStore.Desktop.Views
         private void LoadData()
         {
             _vm.LoadRec(_window.Id);
+            this.BindDataToComponentts();
 
             if (_vm.Rec != null)
             {
-                this.BindDataToComponentts();
-
                 this.txtCode.Text = _vm.Rec.Code;
                 this.txtSubject.Text = _vm.Rec.Subject;
                 this.dpDueDate.SelectedDate = _vm.Rec.DueDate == DateTime.MinValue || _vm.Rec.DueDate == null ? DateTime.Now : _vm.Rec.DueDate.Value;
                 this.txtTranslateLanguage.Text = _vm.GetLanguageName(_vm.Rec.TranslateLanguageId);
                 this.txtNotes.Text = _vm.Rec.Notes;
 
-                var statusItem = cbStatus.Items.OfType<SelectListVM>().FirstOrDefault(x => x.Value == EnumHelper.GetSelectItem<ProjectStatus>(_vm.Rec.Status).Value);
+                var statusItem = cbStatus.Items.OfType<SelectListVM<Int32>>().FirstOrDefault(x => x.Value == EnumHelper.GetSelectItem<ProjectStatus>(_vm.Rec.Status).Value);
                 cbStatus.SelectedIndex = cbStatus.Items.IndexOf(statusItem);
 
-                var movieItem = cbMovie.Items.OfType<SelectListGuidVM>().FirstOrDefault(x => x.Value == _vm.Rec.MovieId);
+                var movieItem = cbMovie.Items.OfType<SelectListVM<Guid>>().FirstOrDefault(x => x.Value == _vm.Rec.MovieId);
                 cbMovie.SelectedIndex = cbMovie.Items.IndexOf(movieItem);
             }
         }
@@ -85,7 +84,7 @@ namespace MovieStore.Desktop.Views
                 throw new Exception();
 
             _vm.Rec.MovieId = movieId;
-            _vm.Rec.Status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM).Value);
+            _vm.Rec.Status = (ProjectStatus)Enum.ToObject(typeof(ProjectStatus), (cbStatus.SelectedItem as SelectListVM<Int32>).Value);
             _vm.Rec.Notes = txtNotes.Text;
 
             if (_vm.Id == null || _vm.Id.IsNotValid())
