@@ -59,6 +59,9 @@ namespace MovieStore.Desktop.DI
             Bind<ProjectListViewModel>().ToSelf().InTransientScope();
             Bind<ProjectDetailViewModel>().ToSelf().InTransientScope();
 
+            Bind<MovieListViewModel>().ToSelf().InTransientScope();
+            Bind<MovieDetailViewModel>().ToSelf().InTransientScope();
+
         }
     }
 }

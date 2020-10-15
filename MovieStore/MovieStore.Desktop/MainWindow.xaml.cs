@@ -164,7 +164,7 @@ namespace MovieStore.Desktop
 
         #endregion
 
-        #region Nav Bar Click Events
+        #region Navigation Bar Click Events
 
         private void liHome_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -180,7 +180,7 @@ namespace MovieStore.Desktop
 
         private void liMovie_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DataContext = null;
+            DataContext = _viewModelLocator.MovieListViewModel;
             this.SetTitle("Movie");
         }
 
@@ -286,6 +286,15 @@ namespace MovieStore.Desktop
         public void LoadProjectList()
         {
             DataContext = _viewModelLocator.ProjectListViewModel;
+        }
+
+        public void LoadMovieDetail()
+        {
+            DataContext = _viewModelLocator.MovieDetailViewModel;
+        }
+        public void LoadMovieList()
+        {
+            DataContext = _viewModelLocator.MovieListViewModel;
         }
 
         #endregion

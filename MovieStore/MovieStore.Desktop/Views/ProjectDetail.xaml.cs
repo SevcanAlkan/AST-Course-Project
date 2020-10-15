@@ -60,7 +60,7 @@ namespace MovieStore.Desktop.Views
 
         private void BindDataToComponentts()
         {
-            #region Status ComboBox 
+            #region Status ComboBox
             this.cbStatus.ItemsSource = EnumHelper.GetSelectList<ProjectStatus>();
             this.cbStatus.DisplayMemberPath = "Text";
             this.cbStatus.SelectedValuePath = "Value";

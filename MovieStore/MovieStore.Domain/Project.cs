@@ -14,7 +14,7 @@ namespace MovieStore.Domain
         [GuidValidation]
         public Guid MovieId { get; set; }
         [Required, DefaultValue(1)]
-        public ProjectStatus Status { get; set; }        
+        public ProjectStatus Status { get; set; }
         public DateTime? DueDate { get; set; }
         [Required, MaxLength(10)]
         public string Code { get; set; }

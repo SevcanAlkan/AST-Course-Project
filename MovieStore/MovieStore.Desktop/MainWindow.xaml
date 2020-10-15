@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieStore.Desktop"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:viewmodels="clr-namespace:MovieStore.Desktop.ViewModel" 
-        xmlns:views="clr-namespace:MovieStore.Desktop.Views" 
+        xmlns:viewmodels="clr-namespace:MovieStore.Desktop.ViewModel"
+        xmlns:views="clr-namespace:MovieStore.Desktop.Views"
         mc:Ignorable="d"
         Title="iMovie" Height="600" Width="1080" Background="#FF272626" BorderBrush="#FF272626" Foreground="White" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStyle="None" Icon="Assets/icon.png" DataContextChanged="Window_DataContextChanged">
     <Window.Resources>
@@ -58,6 +58,12 @@
         <DataTemplate x:Name="projectDetailViewTemplate" DataType="{x:Type viewmodels:ProjectDetailViewModel}">
             <views:ProjectDetail DataContext="{Binding ProjectDetailViewModel, Source={StaticResource ViewModelLocator}}" />
         </DataTemplate>
+        <DataTemplate x:Name="movieViewTemplate" DataType="{x:Type viewmodels:MovieListViewModel}">
+            <views:MovieList DataContext="{Binding MovieListViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
+        <DataTemplate x:Name="movieDetailViewTemplate" DataType="{x:Type viewmodels:MovieDetailViewModel}">
+            <views:MovieDetail DataContext="{Binding MovieDetailViewModel, Source={StaticResource ViewModelLocator}}" />
+        </DataTemplate>
 
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
@@ -82,7 +88,7 @@
             <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
         </EventTrigger>
     </Window.Triggers>
-    
+
     <Window.Effect>
         <DropShadowEffect/>
     </Window.Effect>

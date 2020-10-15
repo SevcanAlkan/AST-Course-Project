@@ -26,7 +26,7 @@ namespace MovieStore.Data.Service
 
         #endregion
 
-        #region Methods                
+        #region Methods
 
         public List<ProjectVM> GetList(DateTime? startDate = null, DateTime? endDate = null, Guid? movieId = null, ProjectStatus? status = null, Guid? languageId = null, bool showIsDeleted = false)
         {

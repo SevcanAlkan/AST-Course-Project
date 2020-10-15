@@ -15,7 +15,7 @@ namespace MovieStore.Data.Service
 
         #endregion
 
-        #region Methods                
+        #region Methods
 
 
         #endregion

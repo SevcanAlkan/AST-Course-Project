@@ -81,6 +81,15 @@ namespace MovieStore.Desktop
             get { return IocKernel.Get<ProjectDetailViewModel>(); }
         }
 
+        public MovieListViewModel MovieListViewModel
+        {
+            get { return IocKernel.Get<MovieListViewModel>(); }
+        }
+        public MovieDetailViewModel MovieDetailViewModel
+        {
+            get { return IocKernel.Get<MovieDetailViewModel>(); }
+        }
+
         #endregion
     }
 }

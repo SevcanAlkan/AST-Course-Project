@@ -87,7 +87,9 @@
     <Compile Include="DI\IocKernel.cs" />
     <Compile Include="Helper\UserControlCreator.cs" />
     <Compile Include="Helper\UserInfo.cs" />
+    <Compile Include="ViewModel\MovieDetailViewModel.cs" />
     <Compile Include="ViewModel\ProjectDetailViewModel.cs" />
+    <Compile Include="ViewModel\MovieListViewModel.cs" />
     <Compile Include="ViewModel\UserDetailViewModel.cs" />
     <Compile Include="ViewModel\PublisherDetailViewModel.cs" />
     <Compile Include="ViewModel\PersonDetailViewModel.cs" />

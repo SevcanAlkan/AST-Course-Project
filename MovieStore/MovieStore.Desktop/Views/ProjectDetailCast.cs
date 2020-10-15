@@ -60,7 +60,7 @@ namespace MovieStore.Desktop.Views
 
         private void BindDataToCastFormComponents()
         {
-            #region Status ComboBox 
+            #region Status ComboBox
             this.cbCastStatus.ItemsSource = EnumHelper.GetSelectList<ProjectStatus>();
             this.cbCastStatus.DisplayMemberPath = "Text";
             this.cbCastStatus.SelectedValuePath = "Value";
@@ -76,7 +76,7 @@ namespace MovieStore.Desktop.Views
         private async void LoadCastRec(Guid? id = null)
         {
             this._vm.CastRec = new Domain.ProjectCast();
-            this.BindDataToCastFormComponents();            
+            this.BindDataToCastFormComponents();
 
             if (!id.IsNullOrEmpty())
             {
